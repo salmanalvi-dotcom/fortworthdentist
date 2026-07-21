@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#152A45">
 <title>Fort Worth Dentist — General, Implant &amp; Cosmetic Dentistry · Dr. Ghaznia Khan</title>
 <meta name="description" content="General, family, and implant dentistry in Fort Worth by Dr. Ghaznia Khan, DDS. Moving to a new studio at 416 S Henderson St, late summer 2026. Invisalign Gold Provider.">
 <!--
@@ -31,6 +32,7 @@
 <meta property="og:image" content="https://fortworthdentist.com/media/og-image.jpg">
 <meta property="og:url" content="https://fortworthdentist.com/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fortworthveneersuite.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -39,7 +41,7 @@
     --paper:#FBFAF7;
     --navy:#152A45;
     --navy-deep:#0E1D31;
-    --gold:#9A7B3A;
+    --gold:#9A7B3A;--gold-ink:#7A612E;
     --gold-bright:#D6B36A;
     --slate:#5B6472;
     --hairline:rgba(21,42,69,.16);
@@ -49,6 +51,10 @@
     --sans:'Inter',-apple-system,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  a,button,input,textarea,summary{touch-action:manipulation}
+  html{-webkit-tap-highlight-color:transparent}
+  h1,h2,h3{text-wrap:balance}
+  section[id]{scroll-margin-top:84px}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
@@ -61,7 +67,7 @@
 
   .eyebrow{
     font-size:11px;font-weight:500;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--gold);
+    text-transform:uppercase;color:var(--gold-ink);
   }
   .display{
     font-family:var(--serif);font-weight:300;
@@ -101,15 +107,19 @@
   }
   .wordmark{display:inline-flex;align-items:center;text-decoration:none}
   .wordmark img{height:44px;width:auto;display:block}
-  .logo-dark{display:none}
-  nav.scrolled .logo-light{display:none}
-  nav.scrolled .logo-dark{display:block}
+  .wordmark .logo-dark{display:none}
+  nav.scrolled .wordmark .logo-light{display:none}
+  nav.scrolled .wordmark .logo-dark{display:block}
   .nav-cta{
     font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-    color:inherit;text-decoration:none;
-    padding-bottom:3px;border-bottom:1px solid currentColor;
+    color:var(--navy-deep);text-decoration:none;
+    background:var(--gold-bright);
+    padding:12px 20px;border-radius:2px;
+    transition:transform .2s var(--ease-out);
   }
-  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  @media (hover:hover) and (pointer:fine){.nav-cta:hover{transform:translateY(-1px)}}
+  nav.scrolled .nav-cta{background:var(--navy);color:var(--paper)}
+  a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
   /* ── hero: navy, type-led, portrait ─────── */
   .hero{
@@ -251,6 +261,33 @@
     padding-top:14px;border-top:1px solid var(--hairline);
   }
 
+  /* ── cases ──────────────────────────────── */
+  .cases{border-top:1px solid var(--hairline);padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .cases .inner{max-width:1200px;margin:0 auto}
+  .cases-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:clamp(44px,6vh,72px)}
+  .cases h2{font-size:clamp(36px,5vw,64px)}
+  .cases-head p{color:var(--slate);font-size:15px;max-width:34ch}
+  .case3{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(20px,3vw,40px)}
+  .case3 .ba:first-child{grid-row:span 2;aspect-ratio:9/12}
+  .ba{position:relative;overflow:hidden;background:var(--navy-deep);user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
+  .ba.wide2{aspect-ratio:1080/475}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .ba .after-wrap{position:absolute;inset:0;clip-path:inset(0 0 0 var(--x,50%))}
+  .ba .label{position:absolute;top:16px;z-index:3;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);padding:6px 11px;background:rgba(14,29,49,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .ba .label.before{left:16px}
+  .ba .label.after{right:16px}
+  .ba .handle{position:absolute;top:0;bottom:0;left:var(--x,50%);z-index:4;width:1px;background:var(--gold-bright);transform:translateX(-.5px)}
+  .ba .handle::after{content:"⟨ ⟩";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px;box-shadow:0 2px 14px rgba(14,29,49,.35)}
+  .gal-head{display:flex;align-items:baseline;gap:20px;margin:clamp(48px,7vh,72px) 0 20px}
+  .gal-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,34px)}
+  .gal-head p{color:var(--slate);font-size:14px}
+  .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .tile{aspect-ratio:1;border:1px dashed var(--hairline);display:flex;align-items:center;justify-content:center;text-align:center}
+  .tile span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);line-height:1.9}
+  @media (max-width:640px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .consent-note{margin-top:28px;font-size:12px;color:var(--slate)}
+  @media (max-width:880px){.case3{grid-template-columns:1fr}.case3 .ba:first-child{grid-row:auto}}
+
   /* ── new home ───────────────────────────── */
   .move{
     background:var(--navy-deep);color:var(--paper);
@@ -268,7 +305,7 @@
   .map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05)}
 
   /* ── reviews ────────────────────────────── */
-  .reviews{padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .reviews{padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px);background:rgba(154,123,58,.05)}
   .reviews .inner{max-width:1200px;margin:0 auto}
   .reviews .head{
     display:flex;justify-content:space-between;align-items:flex-end;
@@ -280,7 +317,8 @@
   .g-badge .stars{color:var(--gold);letter-spacing:3px}
   .g-badge .meta{font-size:12px;color:var(--slate);letter-spacing:.06em}
   .review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,44px)}
-  .review{border-top:1px solid var(--hairline);padding-top:26px;display:flex;flex-direction:column;gap:16px}
+  .review{background:#fff;border:1px solid var(--hairline);border-top:2px solid var(--gold);padding:26px;display:flex;flex-direction:column;gap:16px}
+  .review .glink{font-size:12px;color:var(--gold-ink);text-decoration:none;letter-spacing:.04em}
   .review .stars{color:var(--gold);letter-spacing:3px;font-size:13px}
   .review q{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.7vw,23px);line-height:1.4;quotes:"“" "”"}
   .review .who{font-size:12px;color:var(--slate);letter-spacing:.08em;text-transform:uppercase}
@@ -293,6 +331,16 @@
   .insurance .inner{max-width:1080px;margin:0 auto}
   .insurance h2{font-size:clamp(30px,4vw,50px);margin-bottom:18px;max-width:18ch}
   .insurance p{color:var(--slate);font-size:16px;max-width:60ch;margin-bottom:12px}
+  .carriers{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 14px}
+  .carriers span{
+    font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--navy);
+    border:1px solid var(--hairline);padding:9px 16px;background:#fff;
+  }
+  .financing{border-top:1px solid var(--hairline);padding-top:26px;margin-top:10px}
+  .membership{border:1px solid var(--gold);background:rgba(154,123,58,.06);padding:26px 28px;margin-top:26px;max-width:520px}
+  .mem-price{font-family:var(--serif);margin-bottom:10px}
+  .mem-price .num{font-size:clamp(40px,4.5vw,54px);font-weight:300;line-height:1}
+  .mem-price .per{font-size:16px;color:var(--slate);margin-left:6px}
 
   /* ── faq ────────────────────────────────── */
   .faq{border-top:1px solid var(--hairline);padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
@@ -391,8 +439,8 @@
 
 <nav id="nav">
   <a class="wordmark" href="#top" aria-label="Fort Worth Dentist — home">
-    <img class="logo-light" src="media/fwd-logo-light.png" alt="Fort Worth Dentist">
-    <img class="logo-dark" src="media/fwd-logo-dark.png" alt="" aria-hidden="true">
+    <img class="logo-light" src="media/fwd-logo-light.png" alt="Fort Worth Dentist" width="1100" height="319">
+    <img class="logo-dark" src="media/fwd-logo-dark.png" alt="" aria-hidden="true" width="1100" height="319">
   </a>
   <a class="nav-cta" href="#contact">Request an Appointment</a>
 </nav>
@@ -403,7 +451,7 @@
     <p class="eyebrow">General · Implant · Family Dentistry</p>
     <h1 class="display" id="hero-h1">Dentistry done <em>properly.</em></h1>
     <p class="hero-sub rv">Comprehensive care for the whole family — exams and cleanings through dental implants and Invisalign — led by Dr. Ghaznia Khan, DDS.</p>
-    <span class="hero-move rv rv-d1">Moving to 416 S Henderson St · Late summer 2026</span>
+    <span class="hero-move rv rv-d1">Now at 1612 Pennsylvania Ave through Aug 31 · New Henderson St studio opens September 2026</span>
     <div class="hero-row">
       <a class="btn rv rv-d1" href="#contact"><span>Request an Appointment</span></a>
       <a class="rating-badge rv rv-d2" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">
@@ -413,7 +461,7 @@
     </div>
   </div>
   <div class="hero-media">
-    <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS — Fort Worth Dentist" loading="eager">
+    <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS — Fort Worth Dentist" loading="eager" fetchpriority="high" width="931" height="1400">
   </div>
 </header>
 
@@ -431,27 +479,27 @@
 <section class="services" id="services">
   <div class="inner">
     <h2 class="display rv">What we do</h2>
-    <a class="svc rv" href="#contact">
+    <a class="svc rv" href="services/general-dentistry.html">
       <span class="name">General &amp; family dentistry</span>
       <span class="desc">Exams, cleanings, fillings, crowns, and honest checkups for every age — preventive care that keeps small problems small.</span>
       <span class="go">→</span>
     </a>
-    <a class="svc rv rv-d1" href="#implants">
+    <a class="svc rv rv-d1" href="services/dental-implants.html">
       <span class="name">Dental implants</span>
       <span class="desc">Permanent replacement for missing teeth — from a single tooth to full-arch solutions — planned digitally and restored to look like they were always yours.</span>
       <span class="go">→</span>
     </a>
-    <a class="svc rv rv-d2" href="#contact">
+    <a class="svc rv rv-d2" href="services/invisalign.html">
       <span class="name">Invisalign</span>
       <span class="desc">Straighten discreetly with an Invisalign Gold Provider — digital planning, clear aligners, and outcomes you preview before you start.</span>
       <span class="go">→</span>
     </a>
-    <a class="svc rv rv-d2" href="#contact">
+    <a class="svc rv rv-d2" href="services/root-canals-extractions.html">
       <span class="name">Root canals &amp; extractions</span>
       <span class="desc">Comfort-focused treatment when a tooth needs rescuing — or a clean, careful exit when it can't be.</span>
       <span class="go">→</span>
     </a>
-    <a class="svc rv rv-d3" href="#contact">
+    <a class="svc rv rv-d3" href="services/emergency-dentist.html">
       <span class="name">Same-day &amp; urgent care</span>
       <span class="desc">Toothache, chip, or swelling — call us first. We hold time for genuine urgencies and will tell you honestly what can wait.</span>
       <span class="go">→</span>
@@ -478,10 +526,13 @@
 <!-- ══ DOCTORS ══ -->
 <section class="doctors" id="doctors">
   <div class="inner">
-    <h2 class="display rv">Your doctors</h2>
+    <div class="cases-head" style="margin-bottom:clamp(44px,6vh,72px)">
+      <h2 class="display rv" style="margin-bottom:0">Your doctors</h2>
+      <p class="rv rv-d1"><a href="meet-the-doctors.html" style="color:var(--gold);text-decoration:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase">Meet the doctors →</a></p>
+    </div>
     <article class="doc">
       <div class="doc-media rv">
-        <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS" loading="lazy">
+        <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS" loading="lazy" width="931" height="1400">
       </div>
       <div>
         <h3 class="rv">Dr. Ghaznia Khan, DDS</h3>
@@ -500,6 +551,47 @@
   </div>
 </section>
 
+<!-- ══ SMILE TRANSFORMATIONS (media served from fortworthveneersuite.com) ══ -->
+<section class="cases" id="cases">
+  <div class="inner">
+    <div class="cases-head">
+      <h2 class="display rv">Smile transformations</h2>
+      <p class="rv rv-d1">Real patients of Dr. Khan, unretouched. Drag the handle to compare.</p>
+    </div>
+    <article class="case3">
+      <div class="ba rv" data-ba tabindex="0" role="slider" aria-label="Before and after comparison, drag or use arrow keys" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <img src="https://fortworthveneersuite.com/media/veneer-case-01-before.jpg" alt="Smile before treatment" loading="lazy">
+        <div class="after-wrap"><img src="https://fortworthveneersuite.com/media/veneer-case-01-after.jpg" alt="Smile after treatment by Dr. Khan" loading="lazy"></div>
+        <span class="label before">Before</span><span class="label after">After</span>
+        <div class="handle"></div>
+      </div>
+      <div class="ba wide2 rv rv-d1" data-ba tabindex="0" role="slider" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <img src="https://fortworthveneersuite.com/media/veneer-case-02-before.jpg" alt="Smile before treatment" loading="lazy">
+        <div class="after-wrap"><img src="https://fortworthveneersuite.com/media/veneer-case-02-after.jpg" alt="Smile after treatment by Dr. Khan" loading="lazy"></div>
+        <span class="label before">Before</span><span class="label after">After</span>
+        <div class="handle"></div>
+      </div>
+      <div class="ba wide2 rv rv-d2" data-ba tabindex="0" role="slider" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <img src="https://fortworthveneersuite.com/media/veneer-case-03-before.jpg" alt="Smile before treatment" loading="lazy">
+        <div class="after-wrap"><img src="https://fortworthveneersuite.com/media/veneer-case-03-after.jpg" alt="Smile after treatment by Dr. Khan" loading="lazy"></div>
+        <span class="label before">Before</span><span class="label after">After</span>
+        <div class="handle"></div>
+      </div>
+    </article>
+    <div class="gal-head rv"><h3>Smile gallery</h3><p>More cases arriving soon.</p></div>
+    <div class="gallery rv rv-d1">
+      <!-- TODO: replace tiles with real case photos as they're approved -->
+      <div class="tile"><span>Photo<br>coming soon</span></div>
+      <div class="tile"><span>Photo<br>coming soon</span></div>
+      <div class="tile"><span>Photo<br>coming soon</span></div>
+      <div class="tile"><span>Photo<br>coming soon</span></div>
+      <div class="tile"><span>Photo<br>coming soon</span></div>
+      <div class="tile"><span>Photo<br>coming soon</span></div>
+    </div>
+    <p class="consent-note rv">All patient photography shared with written consent. See films and the full gallery at <a href="https://fortworthveneersuite.com" target="_blank" rel="noopener" style="color:var(--gold)">The Veneer Suite</a>.</p>
+  </div>
+</section>
+
 <!-- ══ NEW HOME ══ -->
 <section class="move" id="new-home">
   <div class="inner">
@@ -507,8 +599,8 @@
       <p class="eyebrow rv">A new home</p>
       <h2 class="display rv rv-d1">We're moving to Henderson Street.</h2>
       <p class="rv rv-d2">After years on Pennsylvania Avenue, Fort Worth Dentist is moving into a brand-new, purpose-built studio at 416 S Henderson St — five treatment rooms, new technology, and a space designed around comfort rather than clinics.</p>
-      <p class="rv rv-d2">Opening late summer 2026, minutes from the Medical District, Magnolia Avenue, downtown, and TCU. Same doctors, same phone number, better everything else.</p>
-      <p class="rv rv-d3" style="color:rgba(251,250,247,.5);font-size:14px">Until then, we're seeing patients as usual at 1612 Pennsylvania Ave.</p>
+      <p class="rv rv-d2">Opening September 2026, minutes from the Medical District, Magnolia Avenue, downtown, and TCU. Same doctors, same phone number, better everything else.</p>
+      <p class="rv rv-d3" style="color:rgba(251,250,247,.9);font-size:15px;border:1px solid rgba(214,179,106,.45);padding:12px 16px;display:inline-block">Through <strong>August 31, 2026</strong> we're seeing patients as usual at <strong>1612 Pennsylvania Ave</strong>.</p>
     </div>
     <div class="map rv rv-d1">
       <iframe title="Map — 416 S Henderson St, Fort Worth"
@@ -522,7 +614,7 @@
 <section class="reviews">
   <div class="inner">
     <div class="head">
-      <h2 class="display rv">In their words</h2>
+      <h2 class="display rv">Patients rate us <em>4.8</em> out of 5.</h2>
       <a class="g-badge rv rv-d1" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">
         <span class="score">4.8</span>
         <span class="stars">★★★★★</span>
@@ -533,34 +625,50 @@
       <figure class="review rv">
         <span class="stars">★★★★★</span>
         <q>Dr. Khan takes the time to listen, explain procedures clearly, and make sure you're comfortable every step of the way. The level of care and attention to detail is outstanding. I always feel confident that I'm in good hands.</q>
-        <figcaption class="who">Verified Google review</figcaption>
+        <figcaption class="who">Verified Google review · <a class="glink" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">Posted on Google ↗</a></figcaption>
       </figure>
       <figure class="review rv rv-d1">
         <span class="stars">★★★★★</span>
         <q>My son has autism and it had become overwhelming, but the staff stepped right in and helped get my son calm and back to himself so they could clean his teeth. I strongly recommend this practice for any parent who may experience challenges such as mine.</q>
-        <figcaption class="who">Verified Google review</figcaption>
+        <figcaption class="who">Verified Google review · <a class="glink" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">Posted on Google ↗</a></figcaption>
       </figure>
       <figure class="review rv rv-d2">
         <span class="stars">★★★★★</span>
         <q>My family had severe tooth pain and swelling and urgently needed an emergency dentist. They gave us a same-day appointment and helped us immediately — professional, caring, and efficient, and the dentist explained everything clearly.</q>
-        <figcaption class="who">Verified Google review</figcaption>
+        <figcaption class="who">Verified Google review · <a class="glink" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">Posted on Google ↗</a></figcaption>
       </figure>
       <figure class="review rv rv-d3">
         <span class="stars">★★★★★</span>
         <q>From the moment you walk in, you're greeted with warmth and professionalism. The office is clean, well-organized, and the staff are always courteous and supportive. Highly recommend!</q>
-        <figcaption class="who">Verified Google review</figcaption>
+        <figcaption class="who">Verified Google review · <a class="glink" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">Posted on Google ↗</a></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
 <!-- ══ INSURANCE ══ -->
-<section class="insurance">
+<section class="insurance" id="insurance">
   <div class="inner">
     <p class="eyebrow rv">Insurance &amp; payment</p>
-    <h2 class="display rv rv-d1">Straightforward about money.</h2>
+    <h2 class="display rv rv-d1">In network with most PPO plans.</h2>
+    <!-- TODO: confirm this carrier list with the front desk; remove any not accepted -->
+    <div class="carriers rv rv-d1">
+      <span>Delta Dental</span><span>Cigna</span><span>Aetna</span><span>MetLife</span><span>Guardian</span><span>UnitedHealthcare</span><span>Humana</span><span>BCBS</span><span>Principal</span><span>Ameritas</span>
+    </div>
+    <p class="rv rv-d1" style="font-size:14px;color:var(--slate);margin-bottom:28px">We accept all PPO insurance plans, including these and many more — not sure about yours? Call and we'll verify it in minutes.</p>
     <!-- TODO: confirm/expand accepted insurance list with the front desk -->
     <p class="rv rv-d2">We accept most PPO dental insurance plans and will verify your benefits before treatment so there are no surprises. Financing options are available for larger treatment plans, and you'll always see clear numbers before anything begins.</p>
+    <div class="financing rv rv-d2">
+      <p style="font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Flexible financing</p>
+      <p style="margin-bottom:12px">Break treatment into easy monthly payments — fast applications and instant decisions through our financing partners:</p>
+      <div class="carriers"><span>Cherry</span><span>CareCredit</span></div>
+    </div>
+    <div class="membership rv rv-d2">
+      <p style="font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:10px">No insurance? Join the membership plan</p>
+      <p class="mem-price"><span class="num">$499</span><span class="per">/year</span></p>
+      <p style="margin-bottom:6px">Two cleanings and two exams per year, plus <strong>20% off</strong> all other services — simple, predictable, no insurance paperwork.</p>
+      <p style="font-size:14px;color:var(--slate)">Ask the team to enroll at your next visit, or call <a href="tel:+18179261300" style="color:var(--gold-ink)">817-926-1300</a>.</p>
+    </div>
     <p class="rv rv-d2">Not sure about your plan? Call us with your insurance card handy — <a href="tel:+18179261300" style="color:var(--gold)">817-926-1300</a> — and we'll check it for you.</p>
   </div>
 </section>
@@ -575,11 +683,23 @@
     </details>
     <details class="rv">
       <summary>Where are you located?<span class="ind">+</span></summary>
-      <div class="a"><p>We're currently at 1612 Pennsylvania Ave, Fort Worth. In late summer 2026 we move to our new purpose-built studio at 416 S Henderson St — same doctors, same phone number, new home.</p></div>
+      <div class="a"><p>Through August 31, 2026 we're at 1612 Pennsylvania Ave, Fort Worth. From September 2026 we'll be in our new purpose-built studio at 416 S Henderson St — same doctors, same phone number, new home.</p></div>
     </details>
     <details class="rv">
       <summary>Do you take my insurance?<span class="ind">+</span></summary>
       <div class="a"><p>We accept most PPO dental plans and verify your benefits before treatment. Call with your card handy and we'll check for you before your first visit.</p></div>
+    </details>
+    <details class="rv">
+      <summary>What if I don't have insurance?<span class="ind">+</span></summary>
+      <div class="a"><p>You're welcome here. Our in-house membership plan is $499 per year and includes two cleanings and two exams, plus 20% off all other services — and financing is available for larger treatment plans. Ask the team to enroll you at your visit.</p></div>
+    </details>
+    <details class="rv">
+      <summary>Do you see children?<span class="ind">+</span></summary>
+      <div class="a"><p>Yes — we're a family practice and see patients of every age, with extra patience for nervous visitors of any size.</p></div>
+    </details>
+    <details class="rv">
+      <summary>Do you offer payment plans?<span class="ind">+</span></summary>
+      <div class="a"><p>Yes — flexible monthly payment options through our financing partners, with fast applications and instant decisions. Ask the team when you book.</p></div>
     </details>
     <details class="rv">
       <summary>Am I a candidate for dental implants?<span class="ind">+</span></summary>
@@ -603,12 +723,12 @@
       <h2 class="display rv">Request an appointment.</h2>
       <dl>
         <div class="rv rv-d1">
-          <dt>Visit (until late summer 2026)</dt>
-          <dd>1612 Pennsylvania Ave<br>Fort Worth, TX 76104</dd>
+          <dt>Visit — through August 31, 2026</dt>
+          <dd><a href="https://www.google.com/maps/search/?api=1&query=Fort+Worth+Dentist+1612+Pennsylvania+Ave+Fort+Worth+TX+76104" target="_blank" rel="noopener">1612 Pennsylvania Ave<br>Fort Worth, TX 76104 ↗</a></dd>
         </div>
         <div class="rv rv-d1">
-          <dt>Our new home (from late summer 2026)</dt>
-          <dd>416 S Henderson St<br>Fort Worth, TX 76104</dd>
+          <dt>New studio — from September 2026</dt>
+          <dd><a href="https://www.google.com/maps/search/?api=1&query=416+S+Henderson+St+Fort+Worth+TX+76104" target="_blank" rel="noopener">416 S Henderson St<br>Fort Worth, TX 76104 ↗</a></dd>
         </div>
         <div class="rv rv-d2">
           <dt>Call</dt>
@@ -619,6 +739,10 @@
           <dt>Write</dt>
           <dd><a href="mailto:admin@fortworthdentist.com">admin@fortworthdentist.com</a></dd>
         </div>
+        <div class="rv rv-d2">
+          <dt>Follow</dt>
+          <dd><a href="https://www.instagram.com/drkhan__/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/FortWorthDentistTX" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.yelp.com/biz/fort-worth-dentist-fort-worth" target="_blank" rel="noopener">Yelp</a></dd>
+        </div>
         <div class="rv rv-d3">
           <dt>Hours</dt>
           <dd>Mon–Wed 8–5 · Thu 8–3 · Fri 8–1<br>Sat–Sun closed</dd>
@@ -627,11 +751,11 @@
     </div>
     <div>
       <div class="intake-fields rv rv-d1">
-        <input type="text" id="req-name" placeholder="Name" autocomplete="name" aria-label="Name">
-        <input type="text" id="req-contact" placeholder="Phone or email" aria-label="Phone or email">
+        <input type="text" id="req-name" name="name" placeholder="Name…" autocomplete="name" aria-label="Name">
+        <input type="text" id="req-contact" name="contact" placeholder="(817) 555-0100 or you@email.com" autocomplete="tel email" spellcheck="false" aria-label="Phone or email">
       </div>
-      <textarea class="intake-msg rv rv-d2" id="req-msg" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
-      <!-- TODO: create a Formspree form for FWD and set data-formspree="xykrppwe" -->
+      <textarea class="intake-msg rv rv-d2" id="req-msg" name="message" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
+      <!-- TODO: create a Formspree form for FWD and set data-formspree="xxxxxxx" -->
       <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
       <p class="intake-status" id="req-status" role="status"></p>
     </div>
@@ -703,6 +827,27 @@
     if (!ticking){ requestAnimationFrame(paint); ticking = true; }
   }, {passive:true});
 
+  /* before/after sliders */
+  document.querySelectorAll('[data-ba]').forEach(function(ba){
+    var dragging = false;
+    function setX(cx){
+      var r = ba.getBoundingClientRect();
+      var p = Math.min(100, Math.max(0, (cx - r.left) / r.width * 100));
+      ba.style.setProperty('--x', p + '%');
+      ba.setAttribute('aria-valuenow', Math.round(p));
+    }
+    ba.addEventListener('pointerdown', function(e){ dragging = true; ba.setPointerCapture(e.pointerId); setX(e.clientX); });
+    ba.addEventListener('pointermove', function(e){ if (dragging) setX(e.clientX); });
+    ba.addEventListener('pointerup', function(){ dragging = false; });
+    ba.addEventListener('pointercancel', function(){ dragging = false; });
+    ba.addEventListener('keydown', function(e){
+      var now = parseFloat(ba.getAttribute('aria-valuenow'));
+      if (e.key === 'ArrowLeft') now -= 4; else if (e.key === 'ArrowRight') now += 4; else return;
+      e.preventDefault(); now = Math.min(100, Math.max(0, now));
+      ba.style.setProperty('--x', now + '%'); ba.setAttribute('aria-valuenow', Math.round(now));
+    });
+  });
+
   /* request form: Formspree-first, mailto fallback */
   var send = document.getElementById('req-send');
   var status = document.getElementById('req-status');
@@ -769,7 +914,22 @@
   "medicalSpecialty": "Dentistry",
   "founder": {"@type": "Person", "name": "Dr. Ghaznia Khan", "honorificSuffix": "DDS", "alumniOf": "University of Toronto"},
   "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "224"},
-  "sameAs": ["https://www.instagram.com/drkhan__/", "https://fortworthveneersuite.com/"]
+  "sameAs": ["https://www.instagram.com/drkhan__/", "https://www.facebook.com/FortWorthDentistTX", "https://www.yelp.com/biz/fort-worth-dentist-fort-worth", "https://fortworthveneersuite.com/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Are you accepting new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes — for general, family, implant, and Invisalign care. Request an appointment online or call 817-926-1300."}},
+    {"@type":"Question","name":"Where is Fort Worth Dentist located?","acceptedAnswer":{"@type":"Answer","text":"Through August 31, 2026 at 1612 Pennsylvania Ave, Fort Worth, TX. From September 2026 at a new studio, 416 S Henderson St, Fort Worth, TX."}},
+    {"@type":"Question","name":"Do you take my insurance?","acceptedAnswer":{"@type":"Answer","text":"Most PPO dental plans are accepted and benefits are verified before treatment. Call with your insurance card and the team will check it."}},
+    {"@type":"Question","name":"What if I don't have insurance?","acceptedAnswer":{"@type":"Answer","text":"An in-house membership plan is $499 per year and includes two cleanings and two exams, plus 20% off all other services. Financing is also available for larger treatment plans."}},
+    {"@type":"Question","name":"Do you see children?","acceptedAnswer":{"@type":"Answer","text":"Yes — Fort Worth Dentist is a family practice seeing patients of every age."}},
+    {"@type":"Question","name":"Do you offer payment plans?","acceptedAnswer":{"@type":"Answer","text":"Yes — flexible monthly payment options are available through third-party financing partners."}},
+    {"@type":"Question","name":"Can you see me the same day for tooth pain?","acceptedAnswer":{"@type":"Answer","text":"Time is held for genuine urgencies — call 817-926-1300 and the team will triage and get you in the same day when warranted."}}
+  ]
 }
 </script>
 </body>

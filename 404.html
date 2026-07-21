@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Moved | Fort Worth Dentist</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBFAF7;--navy:#152A45;--gold:#9A7B3A;--slate:#5B6472}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--navy);font-family:Inter,sans-serif;
+    min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,5vw,48px);margin-bottom:14px}
+  p{color:var(--slate);max-width:44ch;margin:0 auto 22px;line-height:1.6}
+  a.btn{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--paper);text-decoration:none;background:var(--navy);padding:16px 28px}
+</style>
+</head>
+<body>
+<div>
+  <img src="/media/fwd-logo-dark.png" alt="Fort Worth Dentist" style="height:44px;width:auto;margin:0 auto 28px;display:block">
+  <h1>We've moved this page.</h1>
+  <p id="msg">Our website has a new home — taking you to the right place…</p>
+  <a class="btn" href="/">Go to homepage</a>
+</div>
+<script>
+(function(){
+  // Route old ProSites URLs (and any stray links) to the closest new page.
+  var p = location.pathname.toLowerCase();
+  var map = [
+    [/implant/, "/services/dental-implants.html"],
+    [/invisalign|aligner|orthodont|braces/, "/services/invisalign.html"],
+    [/root-?canal|endodont/, "/services/root-canals-extractions.html"],
+    [/extract/, "/services/root-canals-extractions.html"],
+    [/emergenc|urgent|tooth-?ache/, "/services/emergency-dentist.html"],
+    [/technolog/, "/services/dental-technology.html"],
+    [/clean|exam|hygiene|family|general|preventive|filling|sealant|fluoride/, "/services/general-dentistry.html"],
+    [/doctor|about|team|meet|dr-/, "/meet-the-doctors.html"],
+    [/insurance|financ|membership|payment|billing/, "/#insurance"],
+    [/veneer|cosmetic|smile-?makeover|whitening/, "https://fortworthveneersuite.com/"],
+    [/contact|appointment|schedule|book/, "/#contact"],
+    [/review|testimonial/, "/#top"],
+  ];
+  for (var i = 0; i < map.length; i++){
+    if (map[i][0].test(p)){ location.replace(map[i][1]); return; }
+  }
+  // No match: send home after a beat so the message is readable
+  setTimeout(function(){ location.replace("/"); }, 2500);
+})();
+</script>
+</body>
+</html>
