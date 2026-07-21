@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fort Worth Dentist — General, Implant &amp; Cosmetic Dentistry · Dr. Ghaznia Khan</title>
+<meta name="description" content="General, family, and implant dentistry in Fort Worth by Dr. Ghaznia Khan, DDS. Moving to a new studio at 416 S Henderson St, late summer 2026. Invisalign Gold Provider.">
+<!--
+  ═══════════════════════════════════════════════════════════════
+  FORT WORTH DENTIST — handoff notes
+  ─────────────────────────────────────────────
+  Sibling site to fortworthveneersuite.com — same design system,
+  navy/white/gold palette keyed to the FWD logo colorways.
+
+  STILL TODO (search "TODO"):
+    · Second dentist: name, credentials, portrait, bio
+    · Office hours
+    · Phone — using the practice's Google-listed 817-926-1300; confirm
+    · Insurance list (currently generic "most PPO plans" — confirm/expand)
+    · Formspree ID for the request form (falls back to mailto until set)
+    · Domain — canonical set to fortworthdentist.com; confirm on deploy
+    · Dr. Khan sign-off on all clinical copy
+  ═══════════════════════════════════════════════════════════════
+-->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://fortworthdentist.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fort Worth Dentist">
+<meta property="og:title" content="Fort Worth Dentist — General, Implant &amp; Cosmetic Dentistry">
+<meta property="og:description" content="General, family, and implant dentistry by Dr. Ghaznia Khan, DDS. New Henderson St studio opening late summer 2026.">
+<meta property="og:image" content="https://fortworthdentist.com/media/og-image.jpg">
+<meta property="og:url" content="https://fortworthdentist.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --navy:#152A45;
+    --navy-deep:#0E1D31;
+    --gold:#9A7B3A;
+    --gold-bright:#D6B36A;
+    --slate:#5B6472;
+    --hairline:rgba(21,42,69,.16);
+    --hairline-light:rgba(251,250,247,.18);
+    --ease-out:cubic-bezier(0.23,1,0.32,1);
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--paper);color:var(--navy);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:var(--paper)}
+  img{display:block;max-width:100%}
+
+  .eyebrow{
+    font-size:11px;font-weight:500;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);
+  }
+  .display{
+    font-family:var(--serif);font-weight:300;
+    line-height:1.05;letter-spacing:-.01em;
+  }
+  .display em{font-style:italic;font-weight:300}
+
+  .rv{opacity:0;transform:translateY(18px)}
+  .rv.in{opacity:1;transform:translateY(0);
+    transition:opacity .55s var(--ease-out),transform .55s var(--ease-out)}
+  .rv-d1.in{transition-delay:.06s}
+  .rv-d2.in{transition-delay:.12s}
+  .rv-d3.in{transition-delay:.18s}
+  @media (prefers-reduced-motion:reduce){
+    .rv{transform:none}
+    .rv.in{transition:opacity .3s ease;transition-delay:0s!important}
+  }
+
+  #progress{
+    position:fixed;top:0;left:0;height:2px;width:100%;z-index:60;
+    background:var(--gold);transform:scaleX(0);transform-origin:left;
+  }
+
+  nav{
+    position:fixed;inset:0 0 auto 0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px clamp(24px,5vw,64px);
+    color:var(--paper);
+    transition:background .35s var(--ease-out);
+  }
+  nav.scrolled{
+    background:rgba(251,250,247,.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    color:var(--navy);
+    border-bottom:1px solid var(--hairline);
+  }
+  .wordmark{display:inline-flex;align-items:center;text-decoration:none}
+  .wordmark img{height:44px;width:auto;display:block}
+  .logo-dark{display:none}
+  nav.scrolled .logo-light{display:none}
+  nav.scrolled .logo-dark{display:block}
+  .nav-cta{
+    font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+    color:inherit;text-decoration:none;
+    padding-bottom:3px;border-bottom:1px solid currentColor;
+  }
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  /* ── hero: navy, type-led, portrait ─────── */
+  .hero{
+    min-height:100svh;background:var(--navy);color:var(--paper);
+    display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);
+    align-items:stretch;
+  }
+  .hero-copy{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(110px,15vh,170px) clamp(24px,5vw,72px) clamp(48px,8vh,96px);
+  }
+  .hero .eyebrow{color:var(--gold-bright);margin-bottom:26px}
+  .hero h1{
+    font-size:clamp(46px,6.4vw,96px);
+    max-width:13ch;margin-bottom:26px;
+  }
+  .hero h1 .w{display:inline-block;opacity:0;transform:translateY(24px)}
+  .hero.loaded h1 .w{
+    opacity:1;transform:translateY(0);
+    transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);
+    transition-delay:calc(var(--i)*70ms + 150ms);
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero h1 .w{transform:none}
+    .hero.loaded h1 .w{transition:opacity .4s ease;transition-delay:0s}
+  }
+  .hero-sub{max-width:46ch;color:rgba(251,250,247,.75);font-size:17px;margin-bottom:14px}
+  .hero-move{
+    display:inline-block;margin:6px 0 36px;
+    font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-bright);
+    border:1px solid rgba(214,179,106,.45);
+    padding:10px 16px;
+  }
+  .hero-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;
+    font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--paper);text-decoration:none;
+    border:1px solid var(--paper);
+    padding:17px 30px;position:relative;overflow:hidden;
+    transition:color .25s var(--ease-out);cursor:pointer;
+    font-family:var(--sans);background:transparent;
+  }
+  .btn::before{
+    content:"";position:absolute;inset:0;background:var(--paper);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .3s var(--ease-out);
+  }
+  .btn span{position:relative;z-index:1}
+  @media (hover:hover) and (pointer:fine){
+    .btn:hover{color:var(--navy)}
+    .btn:hover::before{transform:scaleX(1)}
+  }
+  .btn:active{transform:scale(.985)}
+  .btn.dark{color:var(--navy);border-color:var(--navy)}
+  .btn.dark::before{background:var(--navy)}
+  @media (hover:hover) and (pointer:fine){.btn.dark:hover{color:var(--paper)}}
+  .rating-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;color:rgba(251,250,247,.85);text-decoration:none;
+  }
+  .rating-badge .stars{color:var(--gold-bright);letter-spacing:2px;font-size:14px}
+  .hero-media{position:relative;background:var(--navy-deep);overflow:hidden}
+  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+
+  /* ── philosophy ─────────────────────────── */
+  .philosophy{
+    background:var(--navy-deep);color:var(--paper);
+    padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px);
+  }
+  .philosophy .inner{max-width:1080px;margin:0 auto}
+  .philosophy .eyebrow{color:var(--gold-bright);margin-bottom:36px}
+  .philosophy blockquote{
+    font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(28px,4vw,52px);line-height:1.2;max-width:26ch;
+  }
+  .philosophy cite{
+    display:block;margin-top:40px;font-style:normal;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,250,247,.5);
+  }
+
+  /* ── services ledger ────────────────────── */
+  .services{padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .services .inner{max-width:1200px;margin:0 auto}
+  .services h2{font-size:clamp(36px,5vw,64px);margin-bottom:clamp(44px,6vh,72px)}
+  .svc{
+    display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr) auto;
+    gap:32px;align-items:baseline;
+    padding:34px 0;border-top:1px solid var(--hairline);
+    text-decoration:none;color:inherit;
+  }
+  .svc:last-child{border-bottom:1px solid var(--hairline)}
+  .svc .name{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(25px,2.8vw,38px);line-height:1.1;
+    transition:color .2s ease;
+  }
+  .svc .desc{color:var(--slate);font-size:15px;max-width:46ch}
+  .svc .go{font-size:18px;color:var(--gold);transition:transform .25s var(--ease-out)}
+  @media (hover:hover) and (pointer:fine){
+    .svc:hover .name{color:var(--gold)}
+    .svc:hover .go{transform:translateX(6px)}
+  }
+
+  /* ── implants feature ───────────────────── */
+  .implants{
+    background:var(--navy);color:var(--paper);
+    padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px);
+  }
+  .implants .inner{max-width:1080px;margin:0 auto}
+  .implants .eyebrow{color:var(--gold-bright);margin-bottom:24px}
+  .implants h2{font-size:clamp(34px,4.6vw,60px);margin-bottom:22px;max-width:16ch}
+  .implants p{color:rgba(251,250,247,.72);font-size:16px;max-width:56ch;margin-bottom:16px}
+  .implants .btn{margin-top:22px}
+
+  /* ── doctors ────────────────────────────── */
+  .doctors{padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .doctors .inner{max-width:1200px;margin:0 auto}
+  .doctors h2{font-size:clamp(36px,5vw,64px);margin-bottom:clamp(44px,6vh,72px)}
+  .doc{
+    display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);
+    gap:clamp(32px,5vw,72px);align-items:center;
+    padding:clamp(36px,5vh,56px) 0;border-top:1px solid var(--hairline);
+  }
+  .doc:last-child{border-bottom:1px solid var(--hairline)}
+  .doc-media{aspect-ratio:4/5;overflow:hidden;background:var(--navy-deep)}
+  .doc-media img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .doc-media.tbd{
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--hairline);background:transparent;text-align:center;padding:24px;
+  }
+  .doc-media.tbd span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);line-height:2}
+  .doc h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,44px);margin-bottom:16px}
+  .doc p{color:#33415C;font-size:15.5px;max-width:54ch;margin-bottom:14px}
+  .doc .creds{
+    font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);line-height:2.1;max-width:60ch;
+    padding-top:14px;border-top:1px solid var(--hairline);
+  }
+
+  /* ── new home ───────────────────────────── */
+  .move{
+    background:var(--navy-deep);color:var(--paper);
+    padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px);
+  }
+  .move .inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(40px,6vw,88px);align-items:center;
+  }
+  .move .eyebrow{color:var(--gold-bright);margin-bottom:24px}
+  .move h2{font-size:clamp(32px,4.4vw,56px);margin-bottom:20px;max-width:15ch}
+  .move p{color:rgba(251,250,247,.72);font-size:16px;max-width:46ch;margin-bottom:14px}
+  .map{aspect-ratio:4/3;background:var(--navy)}
+  .map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05)}
+
+  /* ── reviews ────────────────────────────── */
+  .reviews{padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .reviews .inner{max-width:1200px;margin:0 auto}
+  .reviews .head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:40px;flex-wrap:wrap;margin-bottom:clamp(44px,6vh,72px);
+  }
+  .reviews h2{font-size:clamp(36px,5vw,64px)}
+  .g-badge{display:inline-flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--navy)}
+  .g-badge .score{font-family:var(--serif);font-weight:300;font-size:44px;line-height:1}
+  .g-badge .stars{color:var(--gold);letter-spacing:3px}
+  .g-badge .meta{font-size:12px;color:var(--slate);letter-spacing:.06em}
+  .review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,44px)}
+  .review{border-top:1px solid var(--hairline);padding-top:26px;display:flex;flex-direction:column;gap:16px}
+  .review .stars{color:var(--gold);letter-spacing:3px;font-size:13px}
+  .review q{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.7vw,23px);line-height:1.4;quotes:"“" "”"}
+  .review .who{font-size:12px;color:var(--slate);letter-spacing:.08em;text-transform:uppercase}
+
+  /* ── insurance ──────────────────────────── */
+  .insurance{
+    border-top:1px solid var(--hairline);
+    padding:clamp(90px,12vh,140px) clamp(24px,5vw,72px);
+  }
+  .insurance .inner{max-width:1080px;margin:0 auto}
+  .insurance h2{font-size:clamp(30px,4vw,50px);margin-bottom:18px;max-width:18ch}
+  .insurance p{color:var(--slate);font-size:16px;max-width:60ch;margin-bottom:12px}
+
+  /* ── faq ────────────────────────────────── */
+  .faq{border-top:1px solid var(--hairline);padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .faq .inner{max-width:900px;margin:0 auto}
+  .faq h2{font-size:clamp(30px,4.2vw,52px);margin-bottom:clamp(44px,6vh,64px);max-width:18ch}
+  .faq details{border-top:1px solid var(--hairline)}
+  .faq details:last-child{border-bottom:1px solid var(--hairline)}
+  .faq summary{
+    list-style:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+    padding:24px 0;font-family:var(--serif);font-weight:400;
+    font-size:clamp(19px,1.9vw,25px);line-height:1.25;transition:color .2s ease;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq .ind{font-family:var(--sans);font-size:18px;color:var(--gold);transition:transform .3s var(--ease-out);flex-shrink:0}
+  .faq details[open] .ind{transform:rotate(45deg)}
+  @media (hover:hover) and (pointer:fine){.faq summary:hover{color:var(--gold)}}
+  .faq .a{padding:0 0 26px;max-width:62ch}
+  .faq .a p{color:var(--slate);font-size:15.5px}
+  .faq details[open] .a{animation:faqIn .4s var(--ease-out)}
+  @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.faq details[open] .a{animation:none}}
+
+  /* ── contact ────────────────────────────── */
+  .contact{padding:clamp(100px,14vh,160px) clamp(24px,5vw,72px)}
+  .contact .inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(40px,6vw,88px);
+  }
+  .contact h2{font-size:clamp(36px,5vw,64px);margin-bottom:32px;max-width:12ch}
+  .contact dl{display:grid;gap:26px;margin-bottom:40px}
+  .contact dt{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .contact dd{font-size:17px}
+  .contact dd a{color:inherit;text-decoration:none}
+  .intake-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin-bottom:10px}
+  .intake-fields input,.intake-msg{
+    font:400 14px/1.4 var(--sans);color:var(--navy);
+    background:transparent;border:1px solid var(--hairline);
+    padding:13px 16px;outline:none;transition:border-color .2s ease;width:100%;
+  }
+  .intake-msg{max-width:480px;resize:vertical;min-height:88px;font-family:var(--sans)}
+  .intake-fields input::placeholder,.intake-msg::placeholder{color:var(--slate)}
+  .intake-fields input:focus,.intake-msg:focus{border-color:var(--gold)}
+  #req-send{margin-top:22px}
+  #req-send[disabled]{opacity:.55;cursor:default}
+  .intake-status{margin-top:14px;font-size:13px;color:var(--gold);min-height:1.2em}
+
+  footer{
+    border-top:1px solid var(--hairline);
+    padding:36px clamp(24px,5vw,72px);
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    font-size:12px;color:var(--slate);letter-spacing:.04em;align-items:flex-end;
+  }
+
+  .actionbar{display:none}
+  @media (max-width:880px){
+    .actionbar{
+      position:fixed;left:0;right:0;bottom:0;z-index:55;
+      display:grid;grid-template-columns:1fr 1fr;
+      background:var(--navy-deep);
+      padding-bottom:env(safe-area-inset-bottom);
+      transform:translateY(100%);transition:transform .4s var(--ease-out);
+    }
+    .actionbar.show{transform:translateY(0)}
+    .actionbar a{
+      display:flex;align-items:center;justify-content:center;
+      padding:18px 12px;font-size:12px;font-weight:500;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--paper);text-decoration:none;
+    }
+    .actionbar a + a{border-left:1px solid rgba(251,250,247,.15)}
+    .actionbar a.book{background:var(--gold);color:var(--navy-deep)}
+  }
+  @media (prefers-reduced-motion:reduce){.actionbar{transition:none}}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-copy{padding-top:130px}
+    .hero-media{aspect-ratio:4/5}
+    .hero-media img{position:static;height:100%}
+    .svc{grid-template-columns:1fr;gap:10px}
+    .svc .go{display:none}
+    .doc{grid-template-columns:1fr}
+    .doc-media{max-width:420px}
+    .move .inner,.contact .inner{grid-template-columns:1fr}
+    .review-grid{grid-template-columns:1fr}
+    .reviews .head{flex-direction:column;align-items:flex-start}
+    .intake-fields{grid-template-columns:1fr}
+    .wordmark img{height:36px}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<nav id="nav">
+  <a class="wordmark" href="#top" aria-label="Fort Worth Dentist — home">
+    <img class="logo-light" src="media/fwd-logo-light.png" alt="Fort Worth Dentist">
+    <img class="logo-dark" src="media/fwd-logo-dark.png" alt="" aria-hidden="true">
+  </a>
+  <a class="nav-cta" href="#contact">Request an Appointment</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <p class="eyebrow">General · Implant · Family Dentistry</p>
+    <h1 class="display" id="hero-h1">Dentistry done <em>properly.</em></h1>
+    <p class="hero-sub rv">Comprehensive care for the whole family — exams and cleanings through dental implants and Invisalign — led by Dr. Ghaznia Khan, DDS.</p>
+    <span class="hero-move rv rv-d1">Moving to 416 S Henderson St · Late summer 2026</span>
+    <div class="hero-row">
+      <a class="btn rv rv-d1" href="#contact"><span>Request an Appointment</span></a>
+      <a class="rating-badge rv rv-d2" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">
+        <span class="stars">★★★★★</span>
+        <span>4.8 · 224 Google reviews</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-media">
+    <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS — Fort Worth Dentist" loading="eager">
+  </div>
+</header>
+
+<!-- ══ PHILOSOPHY ══ -->
+<section class="philosophy">
+  <div class="inner">
+    <p class="eyebrow rv">How we practice</p>
+    <!-- TODO: Dr. Khan sign-off -->
+    <blockquote class="display rv rv-d1">Good dentistry is honest dentistry: fix what needs fixing, protect what doesn't, and explain everything in plain language before we start.</blockquote>
+    <cite class="rv rv-d2">Dr. Ghaznia Khan · Fort Worth Dentist</cite>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services" id="services">
+  <div class="inner">
+    <h2 class="display rv">What we do</h2>
+    <a class="svc rv" href="#contact">
+      <span class="name">General &amp; family dentistry</span>
+      <span class="desc">Exams, cleanings, fillings, crowns, and honest checkups for every age — preventive care that keeps small problems small.</span>
+      <span class="go">→</span>
+    </a>
+    <a class="svc rv rv-d1" href="#implants">
+      <span class="name">Dental implants</span>
+      <span class="desc">Permanent replacement for missing teeth — from a single tooth to full-arch solutions — planned digitally and restored to look like they were always yours.</span>
+      <span class="go">→</span>
+    </a>
+    <a class="svc rv rv-d2" href="#contact">
+      <span class="name">Invisalign</span>
+      <span class="desc">Straighten discreetly with an Invisalign Gold Provider — digital planning, clear aligners, and outcomes you preview before you start.</span>
+      <span class="go">→</span>
+    </a>
+    <a class="svc rv rv-d2" href="#contact">
+      <span class="name">Root canals &amp; extractions</span>
+      <span class="desc">Comfort-focused treatment when a tooth needs rescuing — or a clean, careful exit when it can't be.</span>
+      <span class="go">→</span>
+    </a>
+    <a class="svc rv rv-d3" href="#contact">
+      <span class="name">Same-day &amp; urgent care</span>
+      <span class="desc">Toothache, chip, or swelling — call us first. We hold time for genuine urgencies and will tell you honestly what can wait.</span>
+      <span class="go">→</span>
+    </a>
+    <a class="svc rv rv-d3" href="https://fortworthveneersuite.com" target="_blank" rel="noopener">
+      <span class="name">Cosmetic &amp; veneers</span>
+      <span class="desc">Smile design lives at our boutique studio — The Veneer Suite — for no-shave and minimal-prep porcelain veneers by Dr. Khan.</span>
+      <span class="go">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══ IMPLANTS ══ -->
+<section class="implants" id="implants">
+  <div class="inner">
+    <p class="eyebrow rv">Dental implants</p>
+    <h2 class="display rv rv-d1">Missing teeth, permanently solved.</h2>
+    <p class="rv rv-d2">An implant replaces the whole tooth — root and crown — so it looks, feels, and works like your own. Dr. Khan is Implant Continuum trained with over 2,000 hours of continuing education across implantology and restorative dentistry, and every case is planned digitally before anything is placed.</p>
+    <p class="rv rv-d3">Whether it's one tooth, several, or a full arch, you'll get a clear plan, clear pricing, and a straight answer about whether an implant is truly your best option.</p>
+    <a class="btn rv rv-d3" href="#contact"><span>Ask about implants</span></a>
+  </div>
+</section>
+
+<!-- ══ DOCTORS ══ -->
+<section class="doctors" id="doctors">
+  <div class="inner">
+    <h2 class="display rv">Your doctors</h2>
+    <article class="doc">
+      <div class="doc-media rv">
+        <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS" loading="lazy">
+      </div>
+      <div>
+        <h3 class="rv">Dr. Ghaznia Khan, DDS</h3>
+        <p class="rv rv-d1">Dr. Khan earned her Doctor of Dental Surgery at the University of Toronto, where she also taught — lecturing dental students on restorative techniques within the ADA-accredited curriculum. She has completed more than 2,000 hours of continuing education across implantology, cosmetic dentistry, and Invisalign, and practices with one rule: treat every patient the way she'd want her own family treated.</p>
+        <p class="creds rv rv-d2">DDS, University of Toronto · Implant Continuum · Invisalign Gold Provider · Aesthetic Continuum · 2,000+ CE hours</p>
+      </div>
+    </article>
+    <article class="doc">
+      <!-- TODO: second dentist — name, portrait, credentials, bio -->
+      <div class="doc-media tbd rv"><span>Portrait<br>coming soon</span></div>
+      <div>
+        <h3 class="rv">Joining the practice</h3>
+        <p class="rv rv-d1">A second dentist joins the Henderson Street team — profile coming soon.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══ NEW HOME ══ -->
+<section class="move" id="new-home">
+  <div class="inner">
+    <div>
+      <p class="eyebrow rv">A new home</p>
+      <h2 class="display rv rv-d1">We're moving to Henderson Street.</h2>
+      <p class="rv rv-d2">After years on Pennsylvania Avenue, Fort Worth Dentist is moving into a brand-new, purpose-built studio at 416 S Henderson St — five treatment rooms, new technology, and a space designed around comfort rather than clinics.</p>
+      <p class="rv rv-d2">Opening late summer 2026, minutes from the Medical District, Magnolia Avenue, downtown, and TCU. Same doctors, same phone number, better everything else.</p>
+      <p class="rv rv-d3" style="color:rgba(251,250,247,.5);font-size:14px">Until then, we're seeing patients as usual at 1612 Pennsylvania Ave.</p>
+    </div>
+    <div class="map rv rv-d1">
+      <iframe title="Map — 416 S Henderson St, Fort Worth"
+        src="https://maps.google.com/maps?q=416%20S%20Henderson%20St%2C%20Fort%20Worth%2C%20TX%2076104&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<section class="reviews">
+  <div class="inner">
+    <div class="head">
+      <h2 class="display rv">In their words</h2>
+      <a class="g-badge rv rv-d1" href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">
+        <span class="score">4.8</span>
+        <span class="stars">★★★★★</span>
+        <span class="meta">224 Google reviews →</span>
+      </a>
+    </div>
+    <div class="review-grid">
+      <figure class="review rv">
+        <span class="stars">★★★★★</span>
+        <q>Dr. Khan takes the time to listen, explain procedures clearly, and make sure you're comfortable every step of the way. The level of care and attention to detail is outstanding. I always feel confident that I'm in good hands.</q>
+        <figcaption class="who">Verified Google review</figcaption>
+      </figure>
+      <figure class="review rv rv-d1">
+        <span class="stars">★★★★★</span>
+        <q>My son has autism and it had become overwhelming, but the staff stepped right in and helped get my son calm and back to himself so they could clean his teeth. I strongly recommend this practice for any parent who may experience challenges such as mine.</q>
+        <figcaption class="who">Verified Google review</figcaption>
+      </figure>
+      <figure class="review rv rv-d2">
+        <span class="stars">★★★★★</span>
+        <q>My family had severe tooth pain and swelling and urgently needed an emergency dentist. They gave us a same-day appointment and helped us immediately — professional, caring, and efficient, and the dentist explained everything clearly.</q>
+        <figcaption class="who">Verified Google review</figcaption>
+      </figure>
+      <figure class="review rv rv-d3">
+        <span class="stars">★★★★★</span>
+        <q>From the moment you walk in, you're greeted with warmth and professionalism. The office is clean, well-organized, and the staff are always courteous and supportive. Highly recommend!</q>
+        <figcaption class="who">Verified Google review</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSURANCE ══ -->
+<section class="insurance">
+  <div class="inner">
+    <p class="eyebrow rv">Insurance &amp; payment</p>
+    <h2 class="display rv rv-d1">Straightforward about money.</h2>
+    <!-- TODO: confirm/expand accepted insurance list with the front desk -->
+    <p class="rv rv-d2">We accept most PPO dental insurance plans and will verify your benefits before treatment so there are no surprises. Financing options are available for larger treatment plans, and you'll always see clear numbers before anything begins.</p>
+    <p class="rv rv-d2">Not sure about your plan? Call us with your insurance card handy — <a href="tel:+18179261300" style="color:var(--gold)">817-926-1300</a> — and we'll check it for you.</p>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq" id="faq">
+  <div class="inner">
+    <h2 class="display rv">Common questions</h2>
+    <details class="rv">
+      <summary>Are you accepting new patients?<span class="ind">+</span></summary>
+      <div class="a"><p>Yes — for general, family, implant, and Invisalign care. Request an appointment below or call and the team will find you a time.</p></div>
+    </details>
+    <details class="rv">
+      <summary>Where are you located?<span class="ind">+</span></summary>
+      <div class="a"><p>We're currently at 1612 Pennsylvania Ave, Fort Worth. In late summer 2026 we move to our new purpose-built studio at 416 S Henderson St — same doctors, same phone number, new home.</p></div>
+    </details>
+    <details class="rv">
+      <summary>Do you take my insurance?<span class="ind">+</span></summary>
+      <div class="a"><p>We accept most PPO dental plans and verify your benefits before treatment. Call with your card handy and we'll check for you before your first visit.</p></div>
+    </details>
+    <details class="rv">
+      <summary>Am I a candidate for dental implants?<span class="ind">+</span></summary>
+      <div class="a"><p>Most adults with a missing tooth or failing tooth are — candidacy depends on gum health and bone, which we assess with digital imaging at your consultation. If an implant isn't your best option, Dr. Khan will say so and explain the alternatives.</p></div>
+    </details>
+    <details class="rv">
+      <summary>I have a toothache — can you see me quickly?<span class="ind">+</span></summary>
+      <div class="a"><p>Call us first at 817-926-1300 — we hold time for genuine urgencies and will give you honest guidance on what needs to be seen today versus what can safely wait.</p></div>
+    </details>
+    <details class="rv">
+      <summary>Do you do veneers and cosmetic work?<span class="ind">+</span></summary>
+      <div class="a"><p>Yes — cosmetic smile design lives at our boutique studio, The Veneer Suite, where Dr. Khan focuses on no-shave and minimal-prep porcelain veneers. Visit <a href="https://fortworthveneersuite.com" target="_blank" rel="noopener" style="color:var(--gold)">fortworthveneersuite.com</a> to see her cases.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact" id="contact">
+  <div class="inner">
+    <div>
+      <h2 class="display rv">Request an appointment.</h2>
+      <dl>
+        <div class="rv rv-d1">
+          <dt>Visit (until late summer 2026)</dt>
+          <dd>1612 Pennsylvania Ave<br>Fort Worth, TX 76104</dd>
+        </div>
+        <div class="rv rv-d1">
+          <dt>Our new home (from late summer 2026)</dt>
+          <dd>416 S Henderson St<br>Fort Worth, TX 76104</dd>
+        </div>
+        <div class="rv rv-d2">
+          <dt>Call</dt>
+          <!-- TODO: confirm practice line -->
+          <dd><a href="tel:+18179261300">817-926-1300</a></dd>
+        </div>
+        <div class="rv rv-d2">
+          <dt>Write</dt>
+          <dd><a href="mailto:admin@fortworthdentist.com">admin@fortworthdentist.com</a></dd>
+        </div>
+        <div class="rv rv-d3">
+          <dt>Hours</dt>
+          <dd>Mon–Wed 8–5 · Thu 8–3 · Fri 8–1<br>Sat–Sun closed</dd>
+        </div>
+      </dl>
+    </div>
+    <div>
+      <div class="intake-fields rv rv-d1">
+        <input type="text" id="req-name" placeholder="Name" autocomplete="name" aria-label="Name">
+        <input type="text" id="req-contact" placeholder="Phone or email" aria-label="Phone or email">
+      </div>
+      <textarea class="intake-msg rv rv-d2" id="req-msg" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
+      <!-- TODO: create a Formspree form for FWD and set data-formspree="xxxxxxx" -->
+      <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
+      <p class="intake-status" id="req-status" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span><img src="media/fwd-logo-dark.png" alt="Fort Worth Dentist" style="height:34px;width:auto;display:block;margin-bottom:10px">1612 Pennsylvania Ave · moving to 416 S Henderson St, Fort Worth, TX 76104</span>
+  <span>© 2026 Fort Worth Dentist. All rights reserved.</span>
+</footer>
+
+<div class="actionbar" id="actionbar" aria-label="Quick actions">
+  <a href="tel:+18179261300">Call</a>
+  <a class="book" href="#contact">Book</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* hero word stagger */
+  var h1 = document.getElementById('hero-h1');
+  var walker = document.createTreeWalker(h1, NodeFilter.SHOW_TEXT);
+  var nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+  var i = 0;
+  nodes.forEach(function(node){
+    var frag = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach(function(part){
+      if (/^\s+$/.test(part) || part === '') { frag.appendChild(document.createTextNode(part)); return; }
+      var s = document.createElement('span');
+      s.className = 'w'; s.style.setProperty('--i', i++); s.textContent = part;
+      frag.appendChild(s);
+    });
+    node.parentNode.replaceChild(frag, node);
+  });
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    document.querySelector('.hero').classList.add('loaded');
+  });});
+
+  /* reveals */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.18, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* nav + action bar driven by hero visibility */
+  var abar = document.getElementById('actionbar');
+  var navEl = document.getElementById('nav');
+  var heroEl = document.querySelector('.hero');
+  if (heroEl && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (abar) abar.classList.toggle('show', !e.isIntersecting);
+        if (navEl) navEl.classList.toggle('scrolled', !e.isIntersecting);
+      });
+    }, {threshold:0.15}).observe(heroEl);
+  }
+
+  /* progress */
+  var bar = document.getElementById('progress'); var ticking = false;
+  function paint(){
+    var h = document.documentElement;
+    bar.style.transform = 'scaleX(' + (h.scrollTop / (h.scrollHeight - h.clientHeight || 1)) + ')';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ requestAnimationFrame(paint); ticking = true; }
+  }, {passive:true});
+
+  /* request form: Formspree-first, mailto fallback */
+  var send = document.getElementById('req-send');
+  var status = document.getElementById('req-status');
+  var fs = send.getAttribute('data-formspree');
+  var mail = send.getAttribute('data-mailto');
+  send.addEventListener('click', function(){
+    var name = document.getElementById('req-name').value.trim();
+    var contact = document.getElementById('req-contact').value.trim();
+    var msg = document.getElementById('req-msg').value.trim();
+    if (!contact){
+      status.textContent = 'Please add a phone number or email so we can reach you.';
+      document.getElementById('req-contact').focus(); return;
+    }
+    var payload = { name: name || '(not given)', contact: contact, message: msg || '(none)',
+      _subject: 'Appointment request — Fort Worth Dentist' };
+    if (fs){
+      send.setAttribute('disabled',''); status.textContent = 'Sending…';
+      fetch('https://formspree.io/f/' + fs, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
+      }).then(function(r){
+        if (r.ok){ status.textContent = 'Received — we\'ll reach out within one business day.';
+          send.querySelector('span').textContent = 'Request received'; }
+        else { throw new Error(); }
+      }).catch(function(){
+        send.removeAttribute('disabled');
+        status.textContent = 'Something went wrong — please call 817-926-1300.';
+      });
+    } else if (mail){
+      window.location.href = 'mailto:' + mail +
+        '?subject=' + encodeURIComponent(payload._subject) +
+        '&body=' + encodeURIComponent('Name: '+payload.name+'\nContact: '+payload.contact+'\nRequest: '+payload.message);
+    }
+  });
+})();
+</script>
+
+<!-- Front Desk agent: set data-endpoint to the fwd-frontdesk worker URL after deploying agent/fwd-worker.js.
+     Empty endpoint = button scrolls to the request form instead. -->
+<script src="agent/fwd-widget.js" data-endpoint="" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Fort Worth Dentist",
+  "description": "General, family, and implant dentistry in Fort Worth by Dr. Ghaznia Khan, DDS. Invisalign Gold Provider.",
+  "url": "https://fortworthdentist.com/",
+  "telephone": "+18179261300",
+  "email": "admin@fortworthdentist.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1612 Pennsylvania Ave",
+    "addressLocality": "Fort Worth",
+    "addressRegion": "TX",
+    "postalCode": "76104",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday"],"opens":"08:00","closes":"17:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"08:00","closes":"15:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"13:00"}
+  ],
+  "medicalSpecialty": "Dentistry",
+  "founder": {"@type": "Person", "name": "Dr. Ghaznia Khan", "honorificSuffix": "DDS", "alumniOf": "University of Toronto"},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "224"},
+  "sameAs": ["https://www.instagram.com/drkhan__/", "https://fortworthveneersuite.com/"]
+}
+</script>
+</body>
+</html>
