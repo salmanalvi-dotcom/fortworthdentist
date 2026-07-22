@@ -835,8 +835,7 @@
         <input type="text" id="req-contact" name="contact" placeholder="(817) 555-0100 or you@email.com" autocomplete="tel email" spellcheck="false" aria-label="Phone or email">
       </div>
       <textarea class="intake-msg rv rv-d2" id="req-msg" name="message" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
-      <!-- TODO: create a Formspree form for FWD and set data-formspree="xdaqawkp" -->
-      <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
+      <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="xdaqawkp" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
       <p class="intake-status" id="req-status" role="status"></p>
     </div>
   </div>
@@ -993,9 +992,7 @@
 })();
 </script>
 
-<!-- Front Desk agent: set data-endpoint to the fwd-frontdesk worker URL after deploying agent/fwd-worker.js.
-     Empty endpoint = button scrolls to the request form instead. -->
-<script src="agent/fwd-widget.js" data-endpoint="" defer></script>
+<script src="agent/fwd-widget.js" data-endpoint="https://fwd-frontdesk.salman-alvi.workers.dev" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
