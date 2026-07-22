@@ -120,6 +120,53 @@
   @media (hover:hover) and (pointer:fine){.nav-cta:hover{transform:translateY(-1px)}}
   nav.scrolled .nav-cta{background:var(--navy);color:var(--paper)}
   a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .nav-right{display:flex;align-items:center;gap:clamp(16px,2.5vw,34px)}
+  .nav-links{display:flex;gap:clamp(14px,2vw,28px)}
+  .nav-links a{
+    font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:inherit;text-decoration:none;opacity:.85;transition:opacity .2s ease;
+  }
+  @media (hover:hover) and (pointer:fine){.nav-links a:hover{opacity:1}}
+  .burger{
+    background:none;border:none;cursor:pointer;padding:10px 2px;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .burger span{display:block;width:24px;height:1.5px;background:currentColor;transition:transform .3s var(--ease-out),opacity .3s ease}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(3.75px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-3.75px) rotate(-45deg)}
+  .menu{
+    position:fixed;inset:0;z-index:49;
+    background:var(--navy-deep);color:var(--paper);
+    overflow-y:auto;
+    opacity:0;transition:opacity .35s var(--ease-out);
+  }
+  .menu.open{opacity:1}
+  .menu-inner{
+    max-width:680px;margin:0 auto;
+    padding:120px clamp(24px,6vw,48px) 80px;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .m-link{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(28px,4.5vw,40px);line-height:1.3;
+    color:var(--paper);text-decoration:none;
+    padding:8px 0;border-bottom:1px solid rgba(251,250,247,.1);
+    transition:color .2s ease;
+  }
+  @media (hover:hover) and (pointer:fine){.m-link:hover{color:var(--gold-bright)}}
+  .m-link.ext{font-size:clamp(20px,3vw,26px);color:var(--gold-bright);border-bottom:none;margin-top:10px}
+  .m-group{padding:14px 0;border-bottom:1px solid rgba(251,250,247,.1)}
+  .m-label{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:10px}
+  .m-sub{
+    display:block;font-size:16px;color:rgba(251,250,247,.8);text-decoration:none;
+    padding:7px 0;transition:color .2s ease;
+  }
+  @media (hover:hover) and (pointer:fine){.m-sub:hover{color:var(--gold-bright)}}
+  @media (max-width:880px){
+    .nav-links{display:none}
+    .nav-cta{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.menu{transition:none}.burger span{transition:none}}
 
   /* ── hero: navy, type-led, portrait ─────── */
   .hero{
@@ -442,8 +489,41 @@
     <img class="logo-light" src="media/fwd-logo-light.png" alt="Fort Worth Dentist" width="1100" height="319">
     <img class="logo-dark" src="media/fwd-logo-dark.png" alt="" aria-hidden="true" width="1100" height="319">
   </a>
-  <a class="nav-cta" href="#contact">Request an Appointment</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="meet-the-doctors.html">Doctors</a>
+      <a href="#insurance">Insurance</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <a class="nav-cta" href="#contact">Request an Appointment</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<div class="menu" id="menu" role="dialog" aria-label="Site menu" hidden>
+  <div class="menu-inner">
+    <a class="m-link" href="#top" data-close>Home</a>
+    <div class="m-group">
+      <p class="m-label">Services</p>
+      <a class="m-sub" href="services/general-dentistry.html">General &amp; Family Dentistry</a>
+      <a class="m-sub" href="services/dental-implants.html">Dental Implants</a>
+      <a class="m-sub" href="services/invisalign.html">Invisalign</a>
+      <a class="m-sub" href="services/root-canals-extractions.html">Root Canals &amp; Extractions</a>
+      <a class="m-sub" href="services/emergency-dentist.html">Emergency Dentist</a>
+      <a class="m-sub" href="services/dental-technology.html">Dental Technology</a>
+    </div>
+    <a class="m-link" href="meet-the-doctors.html">Meet the Doctors</a>
+    <a class="m-link" href="#cases" data-close>Smile Transformations</a>
+    <a class="m-link" href="#insurance" data-close>Insurance &amp; Membership</a>
+    <a class="m-link" href="#reviews" data-close>Reviews</a>
+    <a class="m-link" href="#faq" data-close>FAQ</a>
+    <a class="m-link" href="#contact" data-close>Request an Appointment</a>
+    <a class="m-link ext" href="https://fortworthveneersuite.com" target="_blank" rel="noopener">The Veneer Suite ↗</a>
+  </div>
+</div>
 
 <!-- ══ HERO ══ -->
 <header class="hero" id="top">
@@ -611,7 +691,7 @@
 </section>
 
 <!-- ══ REVIEWS ══ -->
-<section class="reviews">
+<section class="reviews" id="reviews">
   <div class="inner">
     <div class="head">
       <h2 class="display rv">Patients rate us <em>4.8</em> out of 5.</h2>
@@ -826,6 +906,33 @@
   window.addEventListener('scroll', function(){
     if (!ticking){ requestAnimationFrame(paint); ticking = true; }
   }, {passive:true});
+
+  /* burger menu */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('menu');
+  function setMenu(open){
+    burger.setAttribute('aria-expanded', open);
+    if (open){
+      menu.hidden = false;
+      requestAnimationFrame(function(){ menu.classList.add('open'); });
+      document.body.style.overflow = 'hidden';
+    } else {
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(function(){ menu.hidden = true; }, reduce ? 0 : 350);
+    }
+  }
+  if (burger && menu){
+    burger.addEventListener('click', function(){
+      setMenu(burger.getAttribute('aria-expanded') !== 'true');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') setMenu(false);
+    });
+  }
 
   /* before/after sliders */
   document.querySelectorAll('[data-ba]').forEach(function(ba){
