@@ -71,7 +71,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="fields">
     <input type="text" id="rq-name" name="name" placeholder="Name…" autocomplete="name" aria-label="Name">
-    <input type="text" id="rq-contact" name="contact" placeholder="(817) 555-0100 or you@email.com" autocomplete="tel email" spellcheck="false" aria-label="Phone or email">
+    <input type="tel" id="rq-phone" name="phone" placeholder="Phone — (817) 555-0100" autocomplete="tel" inputmode="tel" spellcheck="false" aria-label="Phone (required)" required>
+    <input type="email" id="rq-email" name="email" placeholder="Email — you@email.com" autocomplete="email" spellcheck="false" aria-label="Email (required)" required style="grid-column:1/-1">
   </div>
   <textarea id="rq-msg" name="message" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
   <button class="send" id="rq-send" type="button" data-formspree="xdaqawkp"><span>Send request</span></button>
@@ -100,16 +101,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var status = document.getElementById('rq-status');
   send.addEventListener('click', function(){
     var name = document.getElementById('rq-name').value.trim();
-    var contact = document.getElementById('rq-contact').value.trim();
+    var phone = document.getElementById('rq-phone').value.trim();
+    var email = document.getElementById('rq-email').value.trim();
     var msg = document.getElementById('rq-msg').value.trim();
-    if (!contact){
-      status.textContent = 'Please add a phone number or email so we can reach you.';
-      document.getElementById('rq-contact').focus(); return;
+    if (phone.replace(/\D/g,'').length < 7){
+      status.textContent = 'Please add a phone number so we can reach you.';
+      document.getElementById('rq-phone').focus(); return;
+    }
+    if (email.indexOf('@') < 1){
+      status.textContent = 'Please add an email address as well.';
+      document.getElementById('rq-email').focus(); return;
     }
     var gclid = '';
     try { gclid = sessionStorage.getItem('fwd_gclid') || ''; } catch(e){}
     var payload = {
-      name: name || '(not given)', contact: contact, message: msg || '(none)',
+      name: name || '(not given)', phone: phone, email: email, message: msg || '(none)',
+      _replyto: email,
       gclid: gclid || '(none)', source: 'ads-landing-appointment-request',
       _subject: 'Appointment request — Fort Worth Dentist (ads)'
     };

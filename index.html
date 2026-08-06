@@ -845,7 +845,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <div class="intake-fields rv rv-d1">
         <input type="text" id="req-name" name="name" placeholder="Name…" autocomplete="name" aria-label="Name">
-        <input type="text" id="req-contact" name="contact" placeholder="(817) 555-0100 or you@email.com" autocomplete="tel email" spellcheck="false" aria-label="Phone or email">
+        <input type="tel" id="req-phone" name="phone" placeholder="Phone — (817) 555-0100" autocomplete="tel" inputmode="tel" spellcheck="false" aria-label="Phone (required)" required>
+        <input type="email" id="req-email" name="email" placeholder="Email — you@email.com" autocomplete="email" spellcheck="false" aria-label="Email (required)" required style="grid-column:1/-1">
       </div>
       <textarea class="intake-msg rv rv-d2" id="req-msg" name="message" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
       <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="xdaqawkp" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
@@ -974,13 +975,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var mail = send.getAttribute('data-mailto');
   send.addEventListener('click', function(){
     var name = document.getElementById('req-name').value.trim();
-    var contact = document.getElementById('req-contact').value.trim();
+    var phone = document.getElementById('req-phone').value.trim();
+    var email = document.getElementById('req-email').value.trim();
     var msg = document.getElementById('req-msg').value.trim();
-    if (!contact){
-      status.textContent = 'Please add a phone number or email so we can reach you.';
-      document.getElementById('req-contact').focus(); return;
+    if (phone.replace(/\D/g,'').length < 7){
+      status.textContent = 'Please add a phone number so we can reach you.';
+      document.getElementById('req-phone').focus(); return;
     }
-    var payload = { name: name || '(not given)', contact: contact, message: msg || '(none)',
+    if (email.indexOf('@') < 1){
+      status.textContent = 'Please add an email address as well.';
+      document.getElementById('req-email').focus(); return;
+    }
+    var payload = { name: name || '(not given)', phone: phone, email: email, message: msg || '(none)',
+      _replyto: email,
       _subject: 'Appointment request — Fort Worth Dentist' };
     if (fs){
       send.setAttribute('disabled',''); status.textContent = 'Sending…';
