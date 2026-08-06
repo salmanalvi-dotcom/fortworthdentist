@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#152A45">
+<title>Request an Appointment | Fort Worth Dentist</title>
+<meta name="description" content="Request an appointment with Fort Worth Dentist — general, family, and implant dentistry by Dr. Ghaznia Khan, DDS. We reply within one business day.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://fortworthdentist.com/appointment-request/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBFAF7;--navy:#152A45;--navy-deep:#0E1D31;--gold:#9A7B3A;--gold-ink:#7A612E;--gold-bright:#D6B36A;--slate:#5B6472;--hairline:rgba(21,42,69,.16);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  a,button,input,textarea{touch-action:manipulation}
+  html{-webkit-tap-highlight-color:transparent}
+  body{background:var(--paper);color:var(--navy);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--gold);color:var(--paper)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px clamp(20px,4vw,48px);background:var(--navy-deep)}
+  .wordmark img{height:52px;width:auto;display:block}
+  nav a.tel{color:var(--gold-bright);text-decoration:none;font-weight:500;font-size:15px}
+  .wrap{max-width:640px;margin:0 auto;padding:clamp(36px,6vh,64px) 20px clamp(60px,9vh,100px)}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,6vw,48px);line-height:1.1;text-wrap:balance;margin-bottom:14px}
+  .sub{color:var(--slate);margin-bottom:8px}
+  .stars{color:var(--gold);letter-spacing:2px}
+  .badge{font-size:13px;color:var(--slate);margin-bottom:30px}
+  .badge a{color:inherit}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  input,textarea{font:400 16px/1.4 var(--sans);color:var(--navy);background:#fff;border:1px solid var(--hairline);padding:14px 16px;outline:none;width:100%;transition:border-color .2s ease}
+  textarea{resize:vertical;min-height:96px}
+  input::placeholder,textarea::placeholder{color:var(--slate)}
+  input:focus,textarea:focus{border-color:var(--gold)}
+  button.send{width:100%;margin-top:14px;cursor:pointer;font:500 13px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--paper);background:var(--navy);border:none;padding:18px}
+  button.send[disabled]{opacity:.55;cursor:default}
+  .status{margin-top:12px;font-size:14px;color:var(--gold-ink);min-height:1.3em}
+  .or{display:flex;align-items:center;gap:14px;margin:30px 0;color:var(--slate);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .or::before,.or::after{content:"";height:1px;background:var(--hairline);flex:1}
+  a.call{display:block;text-align:center;font:500 13px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--navy);border:1px solid var(--navy);padding:17px;text-decoration:none}
+  .meta{margin-top:36px;padding-top:26px;border-top:1px solid var(--hairline);font-size:14px;color:var(--slate)}
+  .meta strong{color:var(--navy);font-weight:500}
+  .meta a{color:var(--gold-ink)}
+  @media (max-width:520px){.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="wordmark" href="/" aria-label="Fort Worth Dentist — home"><img src="/media/fwd-logo-light.svg" alt="Fort Worth Dentist" width="1105" height="512"></a>
+  <a class="tel" href="tel:+18179261300">817-926-1300</a>
+</nav>
+<main class="wrap">
+  <h1>Request an appointment.</h1>
+  <p class="sub">General, family &amp; implant dentistry by Dr. Ghaznia Khan, DDS. Tell us what you need — the team reaches out within one business day.</p>
+  <p class="badge"><span class="stars">★★★★★</span> 4.8 · 224 Google reviews · <a href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener">See reviews</a></p>
+
+  <div class="fields">
+    <input type="text" id="rq-name" name="name" placeholder="Name…" autocomplete="name" aria-label="Name">
+    <input type="text" id="rq-contact" name="contact" placeholder="(817) 555-0100 or you@email.com" autocomplete="tel email" spellcheck="false" aria-label="Phone or email">
+  </div>
+  <textarea id="rq-msg" name="message" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
+  <button class="send" id="rq-send" type="button" data-formspree="xdaqawkp"><span>Send request</span></button>
+  <p class="status" id="rq-status" role="status"></p>
+
+  <div class="or">or</div>
+  <a class="call" href="tel:+18179261300">Call 817-926-1300</a>
+
+  <div class="meta">
+    <p><strong>Hours:</strong> Mon–Wed 8–5 · Thu 8–3 · Fri 8–1</p>
+    <p style="margin-top:8px"><strong>Through Aug 31:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Fort+Worth+Dentist+1612+Pennsylvania+Ave+Fort+Worth+TX" target="_blank" rel="noopener">1612 Pennsylvania Ave, Fort Worth, TX 76104</a></p>
+    <p style="margin-top:4px"><strong>From September:</strong> 416 S Henderson St, Fort Worth, TX 76104</p>
+    <p style="margin-top:8px">Tooth pain or swelling? Call — we hold same-day time for genuine urgencies.</p>
+  </div>
+</main>
+<script>
+(function(){
+  /* GCLID capture: persist Google Ads click id and attach to the lead */
+  try {
+    var qs = new URLSearchParams(location.search);
+    var g = qs.get('gclid');
+    if (g) sessionStorage.setItem('fwd_gclid', g);
+  } catch(e){}
+
+  var send = document.getElementById('rq-send');
+  var status = document.getElementById('rq-status');
+  send.addEventListener('click', function(){
+    var name = document.getElementById('rq-name').value.trim();
+    var contact = document.getElementById('rq-contact').value.trim();
+    var msg = document.getElementById('rq-msg').value.trim();
+    if (!contact){
+      status.textContent = 'Please add a phone number or email so we can reach you.';
+      document.getElementById('rq-contact').focus(); return;
+    }
+    var gclid = '';
+    try { gclid = sessionStorage.getItem('fwd_gclid') || ''; } catch(e){}
+    var payload = {
+      name: name || '(not given)', contact: contact, message: msg || '(none)',
+      gclid: gclid || '(none)', source: 'ads-landing-appointment-request',
+      _subject: 'Appointment request — Fort Worth Dentist (ads)'
+    };
+    send.setAttribute('disabled',''); status.textContent = 'Sending…';
+    fetch('https://formspree.io/f/xdaqawkp', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(r){
+      if (r.ok){ status.textContent = 'Received — we\'ll reach out within one business day.';
+        send.querySelector('span').textContent = 'Request received'; }
+      else { throw new Error(); }
+    }).catch(function(){
+      send.removeAttribute('disabled');
+      status.textContent = 'Something went wrong — please call 817-926-1300.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
