@@ -141,6 +141,7 @@
       .then(function (d) {
         typing.remove();
         var reply = d.reply || "I'm sorry — something went wrong. Please call 817-926-1300 and the team will take care of you.";
+        if (d.booked) { try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'appointment_booked' }); } catch(e){} }
         add("assistant", reply);
         history.push({ role: "assistant", content: reply });
         if (d.paymentLink) {
