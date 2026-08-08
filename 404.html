@@ -43,13 +43,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Route old ProSites URLs (and any stray links) to the closest new page.
   var p = location.pathname.toLowerCase();
   var map = [
+    [/sedat|sleep-dent/, "/services/sedation-dentistry.html"],
+    [/full-mouth|rehabilitat|reconstruct/, "/services/full-mouth-restoration.html"],
+    [/crown/, "/services/dental-crowns.html"],
+    [/denture|partial/, "/services/dentures-partials.html"],
+    [/whiten/, "/services/teeth-whitening.html"],
     [/implant/, "/services/dental-implants.html"],
     [/invisalign|aligner|orthodont|braces/, "/services/invisalign.html"],
     [/root-?canal|endodont/, "/services/root-canals-extractions.html"],
-    [/extract/, "/services/root-canals-extractions.html"],
+    [/extract/, "/services/tooth-extractions.html"],
     [/emergenc|urgent|tooth-?ache/, "/services/emergency-dentist.html"],
     [/technolog/, "/services/dental-technology.html"],
-    [/clean|exam|hygiene|family|general|preventive|filling|sealant|fluoride/, "/services/general-dentistry.html"],
+    [/clean|exam|hygiene|preventive/, "/services/exams-cleanings.html"],
+    [/family|general|filling|sealant|fluoride/, "/services/general-dentistry.html"],
     [/doctor|about|team|meet|dr-/, "/meet-the-doctors.html"],
     [/insurance|financ|membership|payment|billing/, "/#insurance"],
     [/veneer|cosmetic|smile-?makeover|whitening/, "https://fortworthveneersuite.com/"],
