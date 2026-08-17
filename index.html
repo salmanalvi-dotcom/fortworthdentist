@@ -339,9 +339,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .gal-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,34px)}
   .gal-head p{color:var(--slate);font-size:14px}
   .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .tile{aspect-ratio:1;border:1px dashed var(--hairline);display:flex;align-items:center;justify-content:center;text-align:center}
-  .tile span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);line-height:1.9}
+  .tile{aspect-ratio:1;overflow:hidden;background:var(--navy-deep);display:block}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease-out)}
+  @media (hover:hover) and (pointer:fine){.tile:hover img{transform:scale(1.03)}}
   @media (max-width:640px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .films{
+    display:flex;gap:14px;overflow-x:auto;padding:4px 2px 14px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:thin;
+  }
+  .reel{
+    position:relative;flex:0 0 auto;width:clamp(200px,23vw,270px);
+    aspect-ratio:9/16;background:var(--navy-deep);cursor:pointer;
+  }
+  .reel video{width:100%;height:100%;object-fit:cover;display:block}
+  .reel .play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--paper);font-size:15px;
+    background:rgba(14,29,49,.28);transition:opacity .25s ease;
+  }
+  .reel .play::before{
+    content:"";position:absolute;width:56px;height:56px;border-radius:50%;
+    background:rgba(14,29,49,.55);border:1px solid rgba(251,250,247,.5);z-index:-1;
+  }
+  .reel.playing .play{opacity:0;pointer-events:none}
   .consent-note{margin-top:28px;font-size:12px;color:var(--slate)}
   @media (max-width:880px){.case3{grid-template-columns:1fr}.case3 .ba:first-child{grid-row:auto}}
 
@@ -453,6 +473,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size:12px;color:var(--slate);letter-spacing:.04em;align-items:flex-end;
   }
 
+  .social-rail{
+    position:fixed;right:18px;bottom:110px;z-index:45;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .social-rail a{
+    display:flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border-radius:50%;
+    color:var(--navy);background:rgba(251,250,247,.88);
+    border:1px solid var(--hairline);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transition:color .2s ease,transform .2s var(--ease-out);
+  }
+  @media (hover:hover) and (pointer:fine){
+    .social-rail a:hover{color:var(--gold);transform:translateY(-2px)}
+  }
+  @media (max-width:880px){.social-rail{display:none}}
+  .m-social{display:flex;gap:12px;margin-top:22px}
+  .m-social a{
+    display:flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:50%;
+    color:var(--paper);border:1px solid rgba(251,250,247,.3);
+  }
   .actionbar{display:none}
   @media (max-width:880px){
     .actionbar{
@@ -544,6 +586,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="m-link" href="#faq" data-close>FAQ</a>
     <a class="m-link" href="#contact" data-close>Request an Appointment</a>
     <a class="m-link ext" href="https://fortworthveneersuite.com" target="_blank" rel="noopener">The Veneer Suite ↗</a>
+    <div class="m-social">
+      <a href="https://www.instagram.com/drkhan__/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/FortWorthDentistTX" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5H16.6V4.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9V11H8v3h2.5v7h3z"/></svg></a>
+      <a href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 10.2v3.6h5.1c-.2 1.3-1.5 3.9-5.1 3.9-3.1 0-5.6-2.5-5.6-5.7S8.9 6.3 12 6.3c1.8 0 2.9.7 3.6 1.4l2.5-2.4C16.5 3.8 14.5 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.6 8.6-8.7 0-.6-.1-1.4-.2-2.1H12z"/></svg></a>
+    </div>
   </div>
 </div>
 
@@ -551,7 +598,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="hero" id="top">
   <div class="hero-copy">
     <p class="eyebrow">General · Implant · Family Dentistry</p>
-    <h1 class="display" id="hero-h1">Dentistry done <em>properly.</em></h1>
+    <h1 class="display" id="hero-h1">A dental <em>home</em> for the whole family.</h1>
     <p class="hero-sub rv">Comprehensive care for the whole family — exams and cleanings through dental implants and Invisalign — led by Dr. Ghaznia Khan, DDS.</p>
     <span class="hero-move rv rv-d1">Now at 1612 Pennsylvania Ave through Aug 31 · New Henderson St studio opens September 2026</span>
     <div class="hero-row">
@@ -681,15 +728,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="handle"></div>
       </div>
     </article>
-    <div class="gal-head rv"><h3>Smile gallery</h3><p>More cases arriving soon.</p></div>
+    <div class="gal-head rv"><h3>Case films</h3><p>Tap to play — sound on.</p></div>
+    <div class="films rv">
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-02-poster.jpg"><source src="media/reel-02.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-03-poster.jpg"><source src="media/reel-03.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-04-poster.jpg"><source src="media/reel-04.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-05-poster.jpg"><source src="media/reel-05.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-06-poster.jpg"><source src="media/reel-06.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-07-poster.jpg"><source src="media/reel-07.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+      <figure class="reel rv"><video preload="none" playsinline loop poster="media/reel-08-poster.jpg"><source src="media/reel-08.mp4" type="video/mp4"></video><span class="play" aria-hidden="true">▶</span></figure>
+    </div>
+    <div class="gal-head rv"><h3>Smile gallery</h3><p>Real patients of Dr. Khan — tap to view full size.</p></div>
     <div class="gallery rv rv-d1">
-      <!-- TODO: replace tiles with real case photos as they're approved -->
-      <div class="tile"><span>Photo<br>coming soon</span></div>
-      <div class="tile"><span>Photo<br>coming soon</span></div>
-      <div class="tile"><span>Photo<br>coming soon</span></div>
-      <div class="tile"><span>Photo<br>coming soon</span></div>
-      <div class="tile"><span>Photo<br>coming soon</span></div>
-      <div class="tile"><span>Photo<br>coming soon</span></div>
+      <a class="tile" href="media/gallery-01.jpg" target="_blank" rel="noopener"><img src="media/gallery-01.jpg" alt="Smile transformation by Dr. Khan — case photography" loading="lazy"></a>
+      <a class="tile" href="media/gallery-02.jpg" target="_blank" rel="noopener"><img src="media/gallery-02.jpg" alt="Smile transformation by Dr. Khan — case photography" loading="lazy"></a>
+      <a class="tile" href="media/gallery-03.jpg" target="_blank" rel="noopener"><img src="media/gallery-03.jpg" alt="Smile transformation by Dr. Khan — case photography" loading="lazy"></a>
+      <a class="tile" href="media/gallery-04.jpg" target="_blank" rel="noopener"><img src="media/gallery-04.jpg" alt="Smile transformation by Dr. Khan — case photography" loading="lazy"></a>
+      <a class="tile" href="media/gallery-05.jpg" target="_blank" rel="noopener"><img src="media/gallery-05.jpg" alt="Smile transformation by Dr. Khan — case photography" loading="lazy"></a>
+      <a class="tile" href="media/gallery-06.jpg" target="_blank" rel="noopener"><img src="media/gallery-06.jpg" alt="Smile transformation by Dr. Khan — case photography" loading="lazy"></a>
     </div>
     <p class="consent-note rv">All patient photography shared with written consent. See films and the full gallery at <a href="https://fortworthveneersuite.com" target="_blank" rel="noopener" style="color:var(--gold)">The Veneer Suite</a>.</p>
   </div>
@@ -870,6 +926,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span>© 2026 Fort Worth Dentist · <a href="privacy.html" style="color:inherit">Privacy</a></span>
 </footer>
 
+<div class="social-rail" aria-label="Follow Fort Worth Dentist">
+  <a href="https://www.instagram.com/drkhan__/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="https://www.facebook.com/FortWorthDentistTX" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5H16.6V4.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9V11H8v3h2.5v7h3z"/></svg></a>
+  <a href="https://maps.app.goo.gl/hovSmxJpayCkxxR79" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 10.2v3.6h5.1c-.2 1.3-1.5 3.9-5.1 3.9-3.1 0-5.6-2.5-5.6-5.7S8.9 6.3 12 6.3c1.8 0 2.9.7 3.6 1.4l2.5-2.4C16.5 3.8 14.5 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.6 8.6-8.7 0-.6-.1-1.4-.2-2.1H12z"/></svg></a>
+</div>
+
 <div class="actionbar" id="actionbar" aria-label="Quick actions">
   <a href="tel:+18179261300">Call</a>
   <a class="book" href="#contact">Book</a>
@@ -955,6 +1017,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') setMenu(false);
     });
+  }
+
+  /* case films: tap to play with sound, one at a time */
+  var reels = Array.prototype.slice.call(document.querySelectorAll('.reel'));
+  function stopReel(r){
+    var v = r.querySelector('video');
+    v.pause(); r.classList.remove('playing');
+  }
+  reels.forEach(function(r){
+    var v = r.querySelector('video');
+    r.addEventListener('click', function(){
+      if (r.classList.contains('playing')){ stopReel(r); return; }
+      reels.forEach(function(o){ if (o !== r) stopReel(o); });
+      v.muted = false;
+      v.play().then(function(){ r.classList.add('playing'); }).catch(function(){});
+    });
+  });
+  if ('IntersectionObserver' in window && reels.length){
+    var reelIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting && e.target.classList.contains('playing')) stopReel(e.target);
+      });
+    }, {threshold: 0.05});
+    reels.forEach(function(r){ reelIO.observe(r); });
   }
 
   /* before/after sliders */
