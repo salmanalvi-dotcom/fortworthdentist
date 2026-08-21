@@ -81,11 +81,19 @@
       return '<a href="' + u + '" target="_blank" rel="noopener">' + u.replace(/^https?:\/\//,'') + '</a>';
     });
   }
+
+  function mdInline(t){
+    var esc = t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    esc = esc.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    esc = esc.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
+    return esc.replace(/\n/g, '<br>');
+  }
+
   function add(role, text, asHTML) {
     var m = document.createElement("div");
     m.className = "cg-msg " + (role === "user" ? "u" : "a");
     if (asHTML) m.innerHTML = text;
-    else if (role !== "user" && /https?:\/\//.test(text)) m.innerHTML = linkify(text);
+    else if (role !== "user") m.innerHTML = /https?:\/\//.test(text) ? linkify(mdInline(text)) : mdInline(text);
     else m.textContent = text;
     log.appendChild(m);
     log.scrollTop = log.scrollHeight;
