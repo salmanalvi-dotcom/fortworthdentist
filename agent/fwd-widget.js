@@ -70,6 +70,7 @@
   var input = panel.querySelector(".cg-in");
   var sendBtn = panel.querySelector(".cg-send");
   var history = [];
+  var cid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
   var busy = false;
 
   function esc(s){
@@ -135,13 +136,13 @@
     fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: history }),
+      body: JSON.stringify({ messages: history, cid: cid }),
     })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         typing.remove();
         var reply = d.reply || "I'm sorry — something went wrong. Please call 817-926-1300 and the team will take care of you.";
-        if (d.booked) { try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'appointment_booked' }); } catch(e){} }
+        if (d.booked) { try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'appointment_booked' }); } catch(e){} try { window.uetq = window.uetq || []; window.uetq.push('event', 'appointment_booked', {}); } catch(e){} }
         add("assistant", reply);
         history.push({ role: "assistant", content: reply });
         if (d.paymentLink) {
