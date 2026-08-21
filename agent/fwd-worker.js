@@ -25,9 +25,17 @@ KNOWLEDGE:
 - Dr. Khan: DDS, University of Toronto (taught there); 2,000+ CE hours across
   implantology, cosmetic dentistry, and Invisalign. A second dentist is joining
   the Henderson St team.
-- Insurance: most PPO dental plans accepted; the team verifies benefits before
-  treatment. NO INSURANCE: in-house membership plan is $499/year and includes
+- Insurance: the practice FILES most PPO dental insurance and handles the claim
+  for the patient. NEVER say "in network" — the practice is not contracted with
+  insurers. If a patient asks directly whether you are in network with their
+  plan, say honestly that the practice isn't in network but files most PPO plans,
+  and the team will check their specific plan and give an estimate before
+  treatment. Otherwise just say the team files most PPO insurance. NO INSURANCE: in-house membership plan is $499/year and includes
   two cleanings and two exams per year, plus 20% off all other services. Financing available for larger plans through Cherry and CareCredit — fast applications, instant decisions; the team helps patients apply.
+- Sedation: IV conscious sedation is offered for anxious patients and longer
+  procedures; patient stays conscious but deeply relaxed and must have a
+  responsible adult drive them home. Suitability is decided at the exam.
+- Also offered: implant placement and full-mouth rehabilitation.
 - Location dates: at 1612 Pennsylvania Ave THROUGH AUGUST 31, 2026; the new
   Henderson St studio opens September 2026.
 - Phone: 817-926-1300. Email: admin@fortworthdentist.com.
@@ -106,8 +114,69 @@ async function callClaude(messages, env) {
   return r.json();
 }
 
+
+// ── conversation logging (Cloudflare KV, optional) ──────────────
+// Bind a KV namespace as CHATLOG and set secret LOG_TOKEN to enable.
+async function logConversation(env, cid, messages, reply, booked) {
+  if (!env.CHATLOG || !cid) return;
+  try {
+    const day = new Date().toISOString().slice(0, 10);
+    const key = "conv:" + day + ":" + cid;
+    const transcript = messages.concat([{ role: "assistant", content: reply }]);
+    await env.CHATLOG.put(key, JSON.stringify({ updated: Date.now(), booked, transcript }), {
+      expirationTtl: 7776000, // 90 days
+      metadata: { booked: booked, msgs: transcript.length, t: Date.now() }
+    });
+  } catch (e) {}
+}
+
+async function handleAdmin(request, env, cors) {
+  const url = new URL(request.url);
+  if (!env.LOG_TOKEN || url.searchParams.get("token") !== env.LOG_TOKEN) {
+    return new Response(JSON.stringify({ error: "unauthorized" }), { status: 401, headers: { ...cors, "Content-Type": "application/json" } });
+  }
+  if (!env.CHATLOG) {
+    return new Response(JSON.stringify({ error: "CHATLOG KV not bound" }), { status: 500, headers: { ...cors, "Content-Type": "application/json" } });
+  }
+  if (url.pathname === "/stats") {
+    const days = parseInt(url.searchParams.get("days") || "14", 10);
+    const out = [];
+    for (let i = 0; i < days; i++) {
+      const d = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+      let convos = 0, booked = 0, msgs = 0, cursor;
+      do {
+        const page = await env.CHATLOG.list({ prefix: "conv:" + d + ":", cursor });
+        convos += page.keys.length;
+        for (const k of page.keys) {
+          if (k.metadata && k.metadata.booked) booked++;
+          if (k.metadata && k.metadata.msgs) msgs += k.metadata.msgs;
+        }
+        cursor = page.list_complete ? null : page.cursor;
+      } while (cursor);
+      out.push({ day: d, conversations: convos, booked: booked, avg_messages: convos ? Math.round(msgs / convos * 10) / 10 : 0 });
+    }
+    return new Response(JSON.stringify(out, null, 2), { headers: { ...cors, "Content-Type": "application/json" } });
+  }
+  if (url.pathname === "/transcripts") {
+    const day = url.searchParams.get("day") || new Date().toISOString().slice(0, 10);
+    const list = await env.CHATLOG.list({ prefix: "conv:" + day + ":" });
+    const out = [];
+    for (const k of list.keys.slice(0, 50)) {
+      const v = await env.CHATLOG.get(k.name, "json");
+      if (v) out.push({ id: k.name.split(":")[2], booked: v.booked, transcript: v.transcript });
+    }
+    return new Response(JSON.stringify(out, null, 2), { headers: { ...cors, "Content-Type": "application/json" } });
+  }
+  return new Response(JSON.stringify({ endpoints: ["/stats?days=14", "/transcripts?day=YYYY-MM-DD"] }), { headers: { ...cors, "Content-Type": "application/json" } });
+}
+
 export default {
   async fetch(request, env) {
+    const _u = new URL(request.url);
+    const _cors2 = { "Access-Control-Allow-Origin": "*" };
+    if (request.method === "GET" && (_u.pathname === "/stats" || _u.pathname === "/transcripts")) {
+      return handleAdmin(request, env, _cors2);
+    }
     const cors = {
       // NOTE: temporarily also allows GitHub Pages while the domain migrates;
       // tighten to https://fortworthdentist.com once DNS is live.
@@ -122,7 +191,7 @@ export default {
       return new Response(JSON.stringify({ error: "not configured" }), { status: 500, headers: { ...cors, "Content-Type": "application/json" } });
 
     try {
-      const { messages } = await request.json();
+      const { messages, cid } = await request.json();
       if (!Array.isArray(messages) || !messages.length || messages.length > 40)
         return new Response(JSON.stringify({ error: "bad request" }), { status: 400, headers: { ...cors, "Content-Type": "application/json" } });
 
@@ -145,6 +214,7 @@ export default {
       }
       if (!reply) reply = "Thank you — the team will reach out within one business day. If anything is urgent, please call 817-926-1300.";
 
+      await logConversation(env, cid, messages, reply, booked);
       return new Response(JSON.stringify({ reply, booked }), { headers: { ...cors, "Content-Type": "application/json" } });
     } catch (e) {
       return new Response(JSON.stringify({ error: "agent error" }), { status: 500, headers: { ...cors, "Content-Type": "application/json" } });

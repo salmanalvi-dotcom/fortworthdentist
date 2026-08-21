@@ -43,6 +43,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .cta{margin-top:clamp(44px,7vh,64px);padding-top:32px;border-top:1px solid var(--hairline)}
   .btn{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);text-decoration:none;background:var(--navy);padding:17px 30px}
   footer{border-top:1px solid var(--hairline);padding:32px clamp(24px,5vw,72px);font-size:12px;color:var(--slate);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+
+  .pfaq{margin:clamp(40px,6vh,60px) 0 0;border-top:1px solid var(--hairline);padding-top:28px}
+  .pfaq h2{margin-top:0}
+  .pfaq details{border-bottom:1px solid var(--hairline);padding:16px 0}
+  .pfaq summary{cursor:pointer;list-style:none;font-weight:500;font-size:16px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+  .pfaq summary::-webkit-details-marker{display:none}
+  .pfaq summary .ind{color:var(--gold);font-weight:400;flex:0 0 auto}
+  .pfaq details[open] summary .ind{transform:rotate(45deg)}
+  .pfaq .a{padding-top:10px}
+  .pfaq .a p{margin-bottom:0;font-size:15px}
 </style>
 </head>
 <body>
@@ -65,10 +75,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>Gentle, even for the nervous</h2>
   <p>We're patient with anxious patients of every age — parents have specifically praised how our team helps children who find dental visits overwhelming. Tell us what makes visits hard for you, and we'll work with it, not around it.</p>
   <h2>No insurance? $499/year covers it.</h2>
-  <p>Our in-house membership plan includes two cleanings and two exams per year, plus 20% off all other services — simple, predictable, no paperwork. Most PPO insurance plans are also accepted and verified before treatment.</p>
+  <p>Our in-house membership plan includes two cleanings and two exams per year, plus 20% off all other services — simple, predictable, no paperwork. We also file most PPO insurance and handle the claim for you.</p>
   <div class="callout">Been a while? No lectures here — just book the visit and we'll take it from there.</div>
 
-  <p style="margin-top:36px;font-size:13px;color:var(--slate)"><strong>More services:</strong> <a href="general-dentistry.html" style="color:var(--gold)">General &amp; Family Dentistry</a> · <a href="dental-implants.html" style="color:var(--gold)">Dental Implants</a> · <a href="invisalign.html" style="color:var(--gold)">Invisalign</a> · <a href="root-canals-extractions.html" style="color:var(--gold)">Root Canals &amp; Extractions</a> · <a href="emergency-dentist.html" style="color:var(--gold)">Emergency Dentist</a> · <a href="dental-technology.html" style="color:var(--gold)">Dental Technology</a> · <a href="dental-crowns.html" style="color:var(--gold)">Dental Crowns</a> · <a href="dentures-partials.html" style="color:var(--gold)">Dentures &amp; Partials</a> · <a href="teeth-whitening.html" style="color:var(--gold)">Teeth Whitening</a> · <a href="tooth-extractions.html" style="color:var(--gold)">Tooth Extractions</a> · <a href="sedation-dentistry.html" style="color:var(--gold)">Sedation Dentistry</a> · <a href="full-mouth-restoration.html" style="color:var(--gold)">Full-Mouth Restoration</a></p>
+  <div class="pfaq">
+    <h2>Common questions</h2>
+    <details>
+      <summary>Do you offer a membership plan for patients without insurance?<span class="ind">+</span></summary>
+      <div class="a"><p>Yes. Our in-house membership plan is $499 per year and includes two cleanings and two exams, plus 20% off all other services — no insurance paperwork and no surprises. Ask the team to enroll you at your visit.</p></div>
+    </details>
+    <details>
+      <summary>Do you accept PPO insurance, and can you verify my benefits before my first visit?<span class="ind">+</span></summary>
+      <div class="a"><p>We file most PPO dental insurance and handle the claim for you. We'll check your specific plan and give you your estimated share before treatment, never after.</p></div>
+    </details>
+    <details>
+      <summary>How often should I have a dental cleaning?<span class="ind">+</span></summary>
+      <div class="a"><p>Twice a year suits most people. Some patients with gum disease or a higher risk of decay benefit from more frequent visits, and we'll recommend an interval based on what we actually see rather than a default.</p></div>
+    </details>
+  </div>
+  <p style="margin-top:36px;font-size:13px;color:var(--slate)"><strong>More services:</strong> <a href="general-dentistry.html" style="color:var(--gold)">General &amp; Family Dentistry</a> · <a href="dental-implants.html" style="color:var(--gold)">Dental Implants</a> · <a href="invisalign.html" style="color:var(--gold)">Invisalign</a> · <a href="root-canals-extractions.html" style="color:var(--gold)">Root Canals &amp; Extractions</a> · <a href="emergency-dentist.html" style="color:var(--gold)">Emergency Dentist</a> · <a href="dental-technology.html" style="color:var(--gold)">Dental Technology</a> · <a href="dental-crowns.html" style="color:var(--gold)">Dental Crowns</a> · <a href="dentures-partials.html" style="color:var(--gold)">Dentures &amp; Partials</a> · <a href="teeth-whitening.html" style="color:var(--gold)">Teeth Whitening</a> · <a href="tooth-extractions.html" style="color:var(--gold)">Tooth Extractions</a> · <a href="sedation-dentistry.html" style="color:var(--gold)">Sedation Dentistry</a> · <a href="full-mouth-restoration.html" style="color:var(--gold)">Full-Mouth Restoration</a> · <a href="broken-chipped-tooth.html" style="color:var(--gold)">Broken &amp; Chipped Tooth Repair</a></p>
   <div class="cta">
     <p>Questions about whether this is right for you? That's what the exam is for — honest answers, clear numbers, no pressure.</p>
     <a class="btn" href="../index.html#contact">Request an Appointment</a>
@@ -89,6 +114,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  {"@type":"ListItem","position":1,"name":"Home","item":"https://fortworthdentist.com/"},
  {"@type":"ListItem","position":2,"name":"Services","item":"https://fortworthdentist.com/#services"},
  {"@type":"ListItem","position":3,"name":"Dental Exams & Cleanings","item":"https://fortworthdentist.com/services/exams-cleanings.html"}]}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do you offer a membership plan for patients without insurance?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Our in-house membership plan is $499 per year and includes two cleanings and two exams, plus 20% off all other services \u2014 no insurance paperwork and no surprises. Ask the team to enroll you at your visit."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do you accept PPO insurance, and can you verify my benefits before my first visit?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "We file most PPO dental insurance and handle the claim for you. We'll check your specific plan and give you your estimated share before treatment, never after."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How often should I have a dental cleaning?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Twice a year suits most people. Some patients with gum disease or a higher risk of decay benefit from more frequent visits, and we'll recommend an interval based on what we actually see rather than a default."
+   }
+  }
+ ]
+}
 </script>
 </body>
 </html>

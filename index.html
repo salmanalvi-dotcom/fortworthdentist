@@ -377,6 +377,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background:rgba(14,29,49,.55);border:1px solid rgba(251,250,247,.5);z-index:-1;
   }
   .reel.playing .play{opacity:0;pointer-events:none}
+  .areas{border-top:1px solid var(--hairline);padding:clamp(64px,9vh,96px) clamp(24px,5vw,72px)}
+  .areas .inner{max-width:900px;margin:0 auto}
+  .areas h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:16px}
+  .areas p{color:var(--slate);font-size:16px;line-height:1.8}
+  .areas strong{color:var(--navy);font-weight:500}
   .consent-note{margin-top:28px;font-size:12px;color:var(--slate)}
   @media (max-width:880px){.case3{grid-template-columns:1fr}.case3 .ba:first-child{grid-row:auto}}
 
@@ -546,6 +551,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .wordmark img{height:46px}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Fort Worth Dentist",
+  "description": "General, family, and implant dentistry in Fort Worth by Dr. Ghaznia Khan, DDS. Invisalign Gold Provider.",
+  "url": "https://fortworthdentist.com/",
+  "telephone": "+18179261300",
+  "email": "admin@fortworthdentist.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1612 Pennsylvania Ave",
+    "addressLocality": "Fort Worth",
+    "addressRegion": "TX",
+    "postalCode": "76104",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday"],"opens":"08:00","closes":"17:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"08:00","closes":"15:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"13:00"}
+  ],
+  "medicalSpecialty": "Dentistry",
+  "founder": {"@type": "Person", "name": "Dr. Ghaznia Khan", "honorificSuffix": "DDS", "alumniOf": "University of Toronto"},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "224"},
+  "areaServed": [
+    {"@type":"City","name":"Fort Worth"},
+    {"@type":"City","name":"Westover Hills"},
+    {"@type":"City","name":"Lake Worth"},
+    {"@type":"City","name":"White Settlement"},
+    {"@type":"City","name":"Benbrook"},
+    {"@type":"City","name":"River Oaks"}
+  ],
+  "sameAs": ["https://www.instagram.com/drkhan__/", "https://www.facebook.com/FortWorthDentistTX", "https://www.yelp.com/biz/fort-worth-dentist-fort-worth", "https://fortworthveneersuite.com/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Are you accepting new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes — for general, family, implant, and Invisalign care. Request an appointment online or call 817-926-1300."}},
+    {"@type":"Question","name":"Where is Fort Worth Dentist located?","acceptedAnswer":{"@type":"Answer","text":"Through August 31, 2026 at 1612 Pennsylvania Ave, Fort Worth, TX. From September 2026 at a new studio, 416 S Henderson St, Fort Worth, TX."}},
+    {"@type":"Question","name":"Do you take my insurance?","acceptedAnswer":{"@type":"Answer","text":"Fort Worth Dentist files most PPO dental insurance and handles claims on your behalf. Your specific plan is checked and your estimated share provided before treatment begins."}},
+    {"@type":"Question","name":"What if I don't have insurance?","acceptedAnswer":{"@type":"Answer","text":"An in-house membership plan is $499 per year and includes two cleanings and two exams, plus 20% off all other services. Financing is also available for larger treatment plans."}},
+    {"@type":"Question","name":"Do you see children?","acceptedAnswer":{"@type":"Answer","text":"Yes — Fort Worth Dentist is a family practice seeing patients of every age."}},
+    {"@type":"Question","name":"Do you offer payment plans?","acceptedAnswer":{"@type":"Answer","text":"Yes — flexible monthly payment options are available through third-party financing partners."}},
+    {"@type":"Question","name":"Can you see me the same day for tooth pain?","acceptedAnswer":{"@type":"Answer","text":"Time is held for genuine urgencies — call 817-926-1300 and the team will triage and get you in the same day when warranted."}}
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -590,6 +646,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="m-sub" href="services/teeth-whitening.html">Teeth Whitening</a>
       <a class="m-sub" href="services/tooth-extractions.html">Tooth Extractions</a>
       <a class="m-sub" href="services/exams-cleanings.html">Exams &amp; Cleanings</a>
+      <a class="m-sub" href="services/broken-chipped-tooth.html">Broken &amp; Chipped Tooth</a>
       <a class="m-sub" href="services/sedation-dentistry.html">Sedation Dentistry</a>
       <a class="m-sub" href="services/full-mouth-restoration.html">Full-Mouth Restoration</a>
       <a class="m-sub" href="services/dental-technology.html">Dental Technology</a>
@@ -673,7 +730,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="desc">Smile design lives at our boutique studio — The Veneer Suite — for minimal prep porcelain veneers by Dr. Khan.</span>
       <span class="go">→</span>
     </a>
-    <p class="svc-more rv">Also: <a href="services/dental-crowns.html">Dental Crowns</a> · <a href="services/dentures-partials.html">Dentures &amp; Partials</a> · <a href="services/teeth-whitening.html">Teeth Whitening</a> · <a href="services/tooth-extractions.html">Tooth Extractions</a> · <a href="services/exams-cleanings.html">Exams &amp; Cleanings</a> · <a href="services/sedation-dentistry.html">Sedation Dentistry</a> · <a href="services/full-mouth-restoration.html">Full-Mouth Restoration</a> · <a href="services/dental-technology.html">Our Technology</a></p>
+    <p class="svc-more rv">Also: <a href="services/dental-crowns.html">Dental Crowns</a> · <a href="services/dentures-partials.html">Dentures &amp; Partials</a> · <a href="services/teeth-whitening.html">Teeth Whitening</a> · <a href="services/tooth-extractions.html">Tooth Extractions</a> · <a href="services/exams-cleanings.html">Exams &amp; Cleanings</a> · <a href="services/broken-chipped-tooth.html">Broken &amp; Chipped Tooth</a> · <a href="services/sedation-dentistry.html">Sedation Dentistry</a> · <a href="services/full-mouth-restoration.html">Full-Mouth Restoration</a> · <a href="services/dental-technology.html">Our Technology</a></p>
   </div>
 </section>
 
@@ -824,12 +881,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="insurance" id="insurance">
   <div class="inner">
     <p class="eyebrow rv">Insurance &amp; payment</p>
-    <h2 class="display rv rv-d1">In network with most PPO plans.</h2>
-    <!-- TODO: confirm this carrier list with the front desk; remove any not accepted -->
-    <div class="carriers rv rv-d1">
-      <span>Delta Dental</span><span>Cigna</span><span>Aetna</span><span>MetLife</span><span>Guardian</span><span>UnitedHealthcare</span><span>Humana</span><span>BCBS</span><span>Principal</span><span>Ameritas</span>
-    </div>
-    <p class="rv rv-d1" style="font-size:14px;color:var(--slate);margin-bottom:28px">We accept all PPO insurance plans, including these and many more — not sure about yours? Call and we'll verify it in minutes.</p>
+    <h2 class="display rv rv-d1">We file most PPO insurance.</h2>
+    <p class="rv rv-d1">We file <strong>most PPO dental insurance</strong> — Delta Dental, Cigna, Aetna, MetLife, Guardian, UnitedHealthcare, Humana, BCBS, Principal, Ameritas, and more — so your benefits go to work whether or not you've been here before.</p>
+    <p class="rv rv-d1" style="font-size:15px;margin-bottom:28px">Because we aren't tied to a network, our recommendations answer to you. We'll check your specific plan and give you your estimated share <em>before</em> treatment, never after. Call with your card handy — <a href="tel:+18179261300" style="color:var(--gold-ink)">817-926-1300</a> — and we'll look it up in minutes.</p>
     <!-- TODO: confirm/expand accepted insurance list with the front desk -->
     <p class="rv rv-d2">We accept most PPO dental insurance plans and will verify your benefits before treatment so there are no surprises. Financing options are available for larger treatment plans, and you'll always see clear numbers before anything begins.</p>
     <div class="financing rv rv-d2">
@@ -933,6 +987,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="xdaqawkp" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
       <p class="intake-status" id="req-status" role="status"></p>
     </div>
+  </div>
+</section>
+
+<section class="areas">
+  <div class="inner">
+    <p class="eyebrow rv">Where we serve</p>
+    <h2 class="display rv rv-d1">Fort Worth and the neighborhoods around it.</h2>
+    <p class="rv rv-d2">Patients travel to us from across west Fort Worth and Tarrant County — including <strong>Fort Worth</strong>, the <strong>Medical District</strong>, <strong>Magnolia Avenue</strong> and Near Southside, <strong>downtown</strong>, <strong>TCU</strong> and University Park, <strong>Westover Hills</strong>, <strong>Lake Worth</strong>, <strong>White Settlement</strong>, <strong>Benbrook</strong>, and <strong>River Oaks</strong>. Our new Henderson Street studio sits minutes from I-30 and the Chisholm Trail Parkway.</p>
   </div>
 </section>
 
@@ -1125,48 +1187,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script src="agent/fwd-widget.js" data-endpoint="https://fwd-frontdesk.salman-alvi.workers.dev" defer></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Dentist",
-  "name": "Fort Worth Dentist",
-  "description": "General, family, and implant dentistry in Fort Worth by Dr. Ghaznia Khan, DDS. Invisalign Gold Provider.",
-  "url": "https://fortworthdentist.com/",
-  "telephone": "+18179261300",
-  "email": "admin@fortworthdentist.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "1612 Pennsylvania Ave",
-    "addressLocality": "Fort Worth",
-    "addressRegion": "TX",
-    "postalCode": "76104",
-    "addressCountry": "US"
-  },
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday"],"opens":"08:00","closes":"17:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"08:00","closes":"15:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"13:00"}
-  ],
-  "medicalSpecialty": "Dentistry",
-  "founder": {"@type": "Person", "name": "Dr. Ghaznia Khan", "honorificSuffix": "DDS", "alumniOf": "University of Toronto"},
-  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "224"},
-  "sameAs": ["https://www.instagram.com/drkhan__/", "https://www.facebook.com/FortWorthDentistTX", "https://www.yelp.com/biz/fort-worth-dentist-fort-worth", "https://fortworthveneersuite.com/"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Are you accepting new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes — for general, family, implant, and Invisalign care. Request an appointment online or call 817-926-1300."}},
-    {"@type":"Question","name":"Where is Fort Worth Dentist located?","acceptedAnswer":{"@type":"Answer","text":"Through August 31, 2026 at 1612 Pennsylvania Ave, Fort Worth, TX. From September 2026 at a new studio, 416 S Henderson St, Fort Worth, TX."}},
-    {"@type":"Question","name":"Do you take my insurance?","acceptedAnswer":{"@type":"Answer","text":"Most PPO dental plans are accepted and benefits are verified before treatment. Call with your insurance card and the team will check it."}},
-    {"@type":"Question","name":"What if I don't have insurance?","acceptedAnswer":{"@type":"Answer","text":"An in-house membership plan is $499 per year and includes two cleanings and two exams, plus 20% off all other services. Financing is also available for larger treatment plans."}},
-    {"@type":"Question","name":"Do you see children?","acceptedAnswer":{"@type":"Answer","text":"Yes — Fort Worth Dentist is a family practice seeing patients of every age."}},
-    {"@type":"Question","name":"Do you offer payment plans?","acceptedAnswer":{"@type":"Answer","text":"Yes — flexible monthly payment options are available through third-party financing partners."}},
-    {"@type":"Question","name":"Can you see me the same day for tooth pain?","acceptedAnswer":{"@type":"Answer","text":"Time is held for genuine urgencies — call 817-926-1300 and the team will triage and get you in the same day when warranted."}}
-  ]
-}
-</script>
 </body>
 </html>
