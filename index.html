@@ -13,8 +13,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#152A45">
-<title>Fort Worth Dentist — General, Implant &amp; Cosmetic Dentistry · Dr. Ghaznia Khan</title>
-<meta name="description" content="General, family, and implant dentistry in Fort Worth by Dr. Ghaznia Khan, DDS. Moving to a new studio at 416 S Henderson St, late summer 2026. Invisalign Gold Provider.">
+<title>Fort Worth Dentist | Implants, Invisalign &amp; Family Dentistry</title>
+<meta name="description" content="Fort Worth dentist for dental implants, Invisalign, and family dentistry. Dr. Ghaznia Khan, DDS — Invisalign Gold Provider, Implant Continuum trained. Most PPO plans accepted; $499/year membership plan. Request an appointment online.">
 <!--
   ═══════════════════════════════════════════════════════════════
   FORT WORTH DENTIST — handoff notes
@@ -36,8 +36,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://fortworthdentist.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fort Worth Dentist">
-<meta property="og:title" content="Fort Worth Dentist — General, Implant &amp; Cosmetic Dentistry">
-<meta property="og:description" content="General, family, and implant dentistry by Dr. Ghaznia Khan, DDS. New Henderson St studio opening late summer 2026.">
+<meta property="og:title" content="Fort Worth Dentist | Implants, Invisalign &amp; Family Dentistry">
+<meta property="og:description" content="Dental implants, Invisalign, and family dentistry in Fort Worth with Dr. Ghaznia Khan, DDS.">
 <meta property="og:image" content="https://fortworthdentist.com/media/og-card.jpg">
 <meta property="og:url" content="https://fortworthdentist.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -105,6 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display:flex;justify-content:space-between;align-items:center;
     padding:16px clamp(24px,5vw,64px);
     color:var(--paper);
+    background:linear-gradient(to bottom, rgba(14,29,49,.62), rgba(14,29,49,0));
     transition:background .35s var(--ease-out);
   }
   nav.scrolled{
@@ -132,17 +133,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nav-right{display:flex;align-items:center;gap:clamp(16px,2.5vw,34px)}
   .nav-links{display:flex;gap:clamp(14px,2vw,28px)}
   .nav-links a{
-    font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-    color:inherit;text-decoration:none;opacity:.85;transition:opacity .2s ease;
+    font-size:13px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+    color:inherit;text-decoration:none;opacity:1;
+    padding:6px 2px;position:relative;
+    text-shadow:0 1px 8px rgba(14,29,49,.55);
+    transition:color .2s ease;
   }
-  @media (hover:hover) and (pointer:fine){.nav-links a:hover{opacity:1}}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:var(--gold-bright);transform:scaleX(0);transform-origin:left;
+    transition:transform .25s var(--ease-out);
+  }
+  @media (hover:hover) and (pointer:fine){
+    .nav-links a:hover{color:var(--gold-bright)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+  }
+  nav.scrolled .nav-links a{text-shadow:none}
+  nav.scrolled{background:rgba(251,250,247,.94)}
   .burger{
     background:none;border:none;cursor:pointer;padding:10px 2px;
     display:flex;flex-direction:column;gap:6px;
   }
-  .burger span{display:block;width:24px;height:1.5px;background:currentColor;transition:transform .3s var(--ease-out),opacity .3s ease}
-  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(3.75px) rotate(45deg)}
-  .burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-3.75px) rotate(-45deg)}
+  .burger span{display:block;width:26px;height:2px;background:currentColor;box-shadow:0 1px 6px rgba(14,29,49,.5);transition:transform .3s var(--ease-out),opacity .3s ease}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
   .menu{
     position:fixed;inset:0;z-index:49;
     background:var(--navy-deep);color:var(--paper);
@@ -599,7 +613,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="hero" id="top">
   <div class="hero-copy">
     <p class="eyebrow">General · Implant · Family Dentistry</p>
-    <h1 class="display" id="hero-h1">A dental <em>home</em> for the whole family.</h1>
+    <h1 class="display" id="hero-h1">Your <em>Fort Worth</em> dentist for implants, Invisalign &amp; family care.</h1>
     <p class="hero-sub rv">Comprehensive care for the whole family — exams and cleanings through dental implants and Invisalign — led by Dr. Ghaznia Khan, DDS.</p>
     <span class="hero-move rv rv-d1">Now at 1612 Pennsylvania Ave through Aug 31 · New Henderson St studio opens September 2026</span>
     <div class="hero-row">
@@ -611,7 +625,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="hero-media">
-    <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS — Fort Worth Dentist" loading="eager" fetchpriority="high" width="931" height="1400">
+    <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS — Fort Worth Dentist" loading="eager" fetchpriority="high" width="1080" height="1620">
   </div>
 </header>
 
@@ -683,7 +697,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <article class="doc">
       <div class="doc-media rv">
-        <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS" loading="lazy" width="931" height="1400">
+        <img src="media/dr-khan-portrait.jpg" alt="Dr. Ghaznia Khan, DDS" loading="lazy" width="1080" height="1620">
       </div>
       <div>
         <h3 class="rv">Dr. Ghaznia Khan, DDS</h3>
