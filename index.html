@@ -475,6 +475,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .contact dd{font-size:17px}
   .contact dd a{color:inherit;text-decoration:none}
   .intake-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin-bottom:10px}
+  .intake-fields select{
+    font:400 16px/1.4 var(--sans);color:var(--navy);background:#fff;
+    border:1px solid var(--hairline);padding:14px 16px;outline:none;width:100%;
+    appearance:none;-webkit-appearance:none;cursor:pointer;
+    background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235B6472' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 16px center;
+  }
+  .intake-fields select:invalid{color:var(--slate)}
+  .intake-fields select:focus{border-color:var(--gold)}
   .intake-fields input,.intake-msg{
     font:400 14px/1.4 var(--sans);color:var(--navy);
     background:transparent;border:1px solid var(--hairline);
@@ -986,6 +995,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="text" id="req-name" name="name" placeholder="Name…" autocomplete="name" aria-label="Name">
         <input type="tel" id="req-phone" name="phone" placeholder="Phone — (817) 555-0100" autocomplete="tel" inputmode="tel" spellcheck="false" aria-label="Phone (required)" required>
         <input type="email" id="req-email" name="email" placeholder="Email — you@email.com" autocomplete="email" spellcheck="false" aria-label="Email (required)" required style="grid-column:1/-1">
+        <select id="req-source" name="how_heard" aria-label="How did you hear about us (required)" required style="grid-column:1/-1">
+          <option value="" disabled selected>How did you hear about us? *</option>
+          <option>Google search</option>
+          <option>Google Maps</option>
+          <option>Google ad</option>
+          <option>Facebook ad</option>
+          <option>Instagram ad</option>
+          <option>Facebook page or post</option>
+          <option>Instagram page or post</option>
+          <option>Drive by / saw the sign</option>
+          <option>Referred by a friend or family member</option>
+          <option>Referred by another dentist or doctor</option>
+          <option>Existing patient returning</option>
+          <option>Insurance provider directory</option>
+          <option>Yelp</option>
+          <option>Nextdoor</option>
+          <option>Mailer or postcard</option>
+          <option>Bing search</option>
+          <option>ChatGPT or AI assistant</option>
+          <option>Other</option>
+        </select>
       </div>
       <textarea class="intake-msg rv rv-d2" id="req-msg" name="message" placeholder="What do you need? (checkup, toothache, implants, Invisalign…)" aria-label="What do you need"></textarea>
       <button class="btn dark rv rv-d3" id="req-send" type="button" data-formspree="xdaqawkp" data-mailto="admin@fortworthdentist.com"><span>Send request</span></button>
@@ -1163,7 +1193,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       status.textContent = 'Please add an email address as well.';
       document.getElementById('req-email').focus(); return;
     }
-    var payload = { name: name || '(not given)', phone: phone, email: email, message: msg || '(none)',
+    var source = document.getElementById('req-source').value;
+    if (!source){
+      status.textContent = 'Please let us know how you heard about us.';
+      document.getElementById('req-source').focus(); return;
+    }
+    var payload = { name: name || '(not given)', phone: phone, email: email, how_heard: source, message: msg || '(none)',
       _replyto: email,
       _subject: 'Appointment request — Fort Worth Dentist' };
     if (fs){

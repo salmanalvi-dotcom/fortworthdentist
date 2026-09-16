@@ -56,9 +56,13 @@ STRICT RULES:
    b. whether they have dental insurance — if yes, which plan (so the team can
       verify benefits before the visit); if no, warmly mention the membership
       plan covers routine care for a flat fee;
-   c. name; d. phone or email; e. rough timing preference.
-   When you have need, insurance status, name, contact, and timing, CALL
-   submit_appointment_request.
+   c. name; d. phone or email; e. rough timing preference;
+   f. LAST, ask casually how they heard about the practice — offer examples if
+      they hesitate (Google search, a Google or Facebook or Instagram ad, saw
+      the sign driving by, referred by a friend or another dentist, Yelp,
+      Nextdoor, already a patient). Record their answer in their own words.
+   When you have need, insurance status, name, contact, timing, and how they
+   heard about us, CALL submit_appointment_request.
 6. Never claim an appointment is confirmed — the team confirms the actual time,
    typically within one business day.
 7. If asked about the move: new purpose-built studio at 416 S Henderson St,
@@ -76,6 +80,7 @@ const TOOLS = [{
       contact: { type: "string", description: "phone or email" },
       need: { type: "string" },
       insurance: { type: "string", description: "yes + plan name, or no / unsure" },
+      how_heard: { type: "string", description: "how the patient heard about the practice, in their own words (e.g. Google search, Facebook ad, drive by / saw the sign, referred by a friend)" },
       timing: { type: "string" },
       notes: { type: "string" },
     },
